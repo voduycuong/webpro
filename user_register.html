@@ -44,17 +44,12 @@
         <label for="country">Country:</label>
         <select id="country" name="country" required> </select>
 
-        <div class="container">
-            <label>Account type:</label>
-            <div class="column">
-                <input type="radio" id="shopper" name="accountType" value="shopper" checked>
-                <label for="shopper" class="account_label">Shopper</label>
-            </div>
-            <div class="column">
-                <input type="radio" id="storeOwner" name="accountType" value="storeOwner">
-                <label for="storeOwner" class="account_label">Store owner</label>
-            </div>
-        </div>
+        <label>Account type:</label>
+        <input type="radio" id="shopper" name="accountType" value="shopper" checked>
+        <label for="shopper" class="account_label">Shopper</label>
+        <input type="radio" id="storeOwner" name="accountType" value="storeOwner">
+        <label for="storeOwner" class="account_label">Store owner</label>
+
 
         <div id="storeFields">
             <label for="businessName">Business name:</label>
@@ -67,11 +62,20 @@
             <select id="storeCategory" name="storeCategory">
                 <option value="1">Clothing Store</option>
                 <option value="2">Electronics Store</option>
+                <option value="3">Fashion and Apparel Stores</option>
+                <option value="4">Electronics Stores</option>
+                <option value="5">Home and Furniture Stores</option>
+                <option value="6">Beauty and Cosmetics Stores</option>
+                <option value="7">Sports and Fitness Stores</option>
+                <option value="8">Toys and Games Stores</option>
+                <option value="9">Food and Grocery Stores
+                <option value="10">Jewelry and Accessories Stores</option>
+                <option value="11">Health and Wellness Stores</option>
+                <option value="12">Books and Stationery Stores</option>
             </select>
         </div>
 
-
-
+        <br>
         <button type="submit">Register</button>
     </form>
 </body>

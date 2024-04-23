@@ -37,3 +37,15 @@ fetch('countries_code.csv')
         populateDropdown(data);
     })
     .catch(error => console.error('Error fetching CSV data:', error));
+
+
+const storeOwnerRadio = document.querySelector('#storeOwner');
+const storeFieldsDiv = document.querySelector('#storeFields');
+
+storeOwnerRadio.addEventListener('change', function () {
+    if (this.checked) {
+        storeFieldsDiv.style.display = 'block';
+    } else {
+        storeFieldsDiv.style.display = 'none';
+    }
+});

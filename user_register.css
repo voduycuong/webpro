@@ -31,16 +31,6 @@ input[type="radio"] {
     display: none;
 }
 
-
-.container {
-    display: flex;
-}
-
 #storeOwner:checked~#storeFields {
     display: block;
-}
-
-.column {
-    width: 20%;
-    padding: 2px;
 }
