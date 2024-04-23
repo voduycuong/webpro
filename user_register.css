@@ -34,3 +34,33 @@ input[type="radio"] {
 #storeOwner:checked~#storeFields {
     display: block;
 }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+}
+
+.form-group input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-columns {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-columns .form-group {
+    flex-basis: calc(50% - 10px);
+    margin-right: 20px;
+}
+
+.form-columns .form-group:last-child {
+    margin-right: 0;
+}
