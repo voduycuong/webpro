@@ -3,43 +3,52 @@
 
 <head>
     <title>Mall Home</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to the CSS file -->
 </head>
 
 <body>
     <!-- Header -->
     <header>
         <img src="mall_logo.png" alt="Mall Logo">
+        <h1>LAZADA</h1>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Fees</a>
-            <a href="#">My Account</a>
-            <a href="#">Browse</a>
-            <a href="#">FAQs</a>
-            <a href="#">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="/pages/about_us.html">About Us</a>
+            <a href="/pages/fees.html">Fees</a>
+            <a href="/pages/login.html">My Account</a>
+            <a href="/pages/browse.html">Browse</a>
+            <a href="/pages/faq.html">FAQs</a>
+            <a href="/pages/contact.html">Contact</a>
         </nav>
     </header>
 
     <!-- Main content -->
     <main>
         <!-- New stores section -->
-        <section>
+        <section id="new-stores">
             <h2>New Stores</h2>
-            <div class="store_wrapper">
-                <a href="store1.html"><img src="champion_23.jpg" alt="Store 1 Logo"> Store 1</a>
+            <div>
+                <a href="nike.html"><img src="/img/nike.webp" alt="Nike Logo"> Store 1</a>
             </div>
-            <div class="store_wrapper">
-                <a href="store2.html"><img src="champion_23.jpg" alt="Store 2 Logo"> Store 2</a>
+            <div>
+                <a href="adidas.html"><img src="/img/adidas.jpg" alt="Adidas Logo"> Store 2</a>
             </div>
-            <div class="store_wrapper">
-                <a href="store3.html"><img src="champion_23.jpg" alt="Store 3 Logo"> Store 2</a>
+            <div>
+                <a href="yonex.html"><img src="/img/yonex.webp" alt="Yonex Logo"> Store 3</a>
             </div>
+            <div>
+                <a href="kamito.html"><img src="/img/kamito.png" alt="Kamito Logo"> Store 4</a>
+            </div>
+            <div>
+                <a href="loreal.html"><img src="/img/loreal.jpg" alt="Loreal Logo"> Store 5</a>
+            </div>
+
+
             <!-- Add more stores as needed -->
         </section>
 
         <!-- New products section -->
-        <section>
+        <section id="new-products">
             <h2>New Products</h2>
             <div>
                 <a href="product1.html"><img src="champion_23.jpg" alt="Product 1 Image"> Product 1</a>
@@ -55,27 +64,27 @@
         </section>
 
         <!-- Featured stores section -->
-        <section>
+        <section id="featured-stores">
             <h2>Featured Stores</h2>
             <div>
-                <a href="store3.html"><img src="store3_logo.png" alt="Store 3 Logo"> Store 3</a>
+                <a href="store3.html"><img src="champion_23.jpg" alt="Store 3 Logo"> Store 3</a>
             </div>
             <div>
-                <a href="store4.html"><img src="store4_logo.png" alt="Store 4 Logo"> Store 4</a>
+                <a href="store4.html"><img src="champion_23.jpg" alt="Store 4 Logo"> Store 4</a>
             </div>
             <!-- Add more featured stores as needed -->
         </section>
 
         <!-- Featured products section -->
-        <section>
+        <section id="featured-products">
             <h2>Featured Products</h2>
             <div>
-                <a href="product3.html"><img src="product3_image.png" alt="Product 3 Image"> Product 3</a>
+                <a href="product3.html"><img src="champion_23.jpg" alt="Product 3 Image"> Product 3</a>
                 <p>Price: $15</p>
                 <p><a href="store3.html">Store 3</a></p>
             </div>
             <div>
-                <a href="product4.html"><img src="product4_image.png" alt="Product 4 Image"> Product 4</a>
+                <a href="product4.html"><img src="champion_23.jpg" alt="Product 4 Image"> Product 4</a>
                 <p>Price: $25</p>
                 <p><a href="store4.html">Store 4</a></p>
             </div>
@@ -96,7 +105,7 @@
         window.onscroll = function () { scrollFunction() };
 
         function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
                 document.querySelector('.back-to-top').style.display = "block";
             } else {
                 document.querySelector('.back-to-top').style.display = "none";
@@ -104,8 +113,11 @@
         }
 
         function scrollToTop() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            if (currentScroll > 0) {
+                window.requestAnimationFrame(scrollToTop);
+                window.scrollTo(0, currentScroll - currentScroll / 10); // Adjust this division factor for smoothness
+            }
         }
     </script>
 </body>

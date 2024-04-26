@@ -78,7 +78,7 @@ section > div:last-child {
 /* Styling for each product image */
 section > div img {
     width: 100%; /* Set the image width to fill the div */
-    height: auto; /* Keep the image aspect ratio */
+    height: 60px; /* Keep the image aspect ratio */
     margin-bottom: 5px; /* Space between image and text */
 }
 
