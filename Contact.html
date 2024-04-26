@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form action="process_form.php" method="post">
+            <label for="contactPurpose">Contact Purpose:</label>
+            <select id="contactPurpose" name="contactPurpose">
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Feedback">Feedback</option>
+                <option value="Support Request">Support Request</option>
+            </select>
+            <br><br>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" minlength="3" required>
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{9,11}" required>
+            <br><br>
+
+            <label>Preferred Contact Method:</label>
+            <input type="radio" id="emailMethod" name="contactMethod" value="email" required>
+            <label for="emailMethod">Email</label>
+            <input type="radio" id="phoneMethod" name="contactMethod" value="phone">
+            <label for="phoneMethod">Phone</label>
+            <br><br>
+
+            <label>Contact Days:</label>
+            <br><br>
+            <input type="checkbox" id="monday" name="contactDays[]" value="Monday">
+            <label for="monday">Monday</label>
+            <input type="checkbox" id="tuesday" name="contactDays[]" value="Tuesday">
+            <label for="tuesday">Tuesday</label>
+            <input type="checkbox" id="Wednesday" name="contactDays[]" value="Wednesday">
+            <label for="wedday">Wednesday</label>
+            <input type="checkbox" id="thursday" name="contactDays[]" value="Thursday">
+            <label for="thursday">Thursday</label>
+            <input type="checkbox" id="friday" name="contactDays[]" value="Friday">
+            <label for="friday">Friday</label>
+            <input type="checkbox" id="saturday" name="contactDays[]" value="Saturday">
+            <label for="saturday">Saturday</label>
+            <input type="checkbox" id="sunday" name="contactDays[]" value="Sunday">
+            <label for="sunday">Sunday</label>
+            <br><br>
+            
+            <textarea id="message" name="message" rows="4" minlength="50" maxlength="500" required></textarea>
+            <input type="submit" value="Send">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+    <script src="contactValidate.js"></script>
+</body>
+</html>
