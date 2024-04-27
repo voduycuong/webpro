@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="add_product.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add Product</h1>
+        <form id="add-product-form" onsubmit="addProduct(event)">
+            <div class="form-group">
+                <label for="product-name">Name:</label>
+                <input type="text" id="product-name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product-price">Price:</label>
+                <input type="number" id="product-price" name="price" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product-description">Description:</label>
+                <textarea id="product-description" name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="product-category">Category:</label>
+                <select id="product-category" name="category" required>
+                    <option value="video game">Video Game</option>
+                    <option value="ps5">PS5</option>
+                    <option value="ps4">PS4</option>
+                    <option value="xbox">Xbox</option>
+                    <!-- Add more categories as needed -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="product-quantity">Quantity/Stock Level:</label>
+                <input type="number" id="product-quantity" name="quantity" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product-image">Main Image:</label>
+                <input type="file" id="product-image" name="image" accept="image/*" required>
+            </div>
+
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+
+    <script>
+        function addProduct(event) {
+            event.preventDefault(); // Prevent form submission
+            const form = document.getElementById('add-product-form');
+            
+            // Gather the form data
+            const formData = new FormData(form);
+
+            // Optionally, you can process the form data, send it to the server, etc.
+            // For demonstration, we'll just log the data
+            formData.forEach((value, key) => {
+                console.log(`${key}: ${value}`);
+            });
+
+            // Notify the user that the product has been added
+            alert('Product has been added successfully!');
+            
+            // Optionally, you can reset the form or navigate to another page
+            form.reset();
+        }
+    </script>
+</body>
+
+</html>
