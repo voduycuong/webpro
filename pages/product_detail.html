@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="../css/product_detail.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Product Detail</h1>
+
+        <!-- Product details -->
+        <div id="product-detail">
+            <div id="image-container">
+                <!-- Main product image -->
+                <img src="../img/nike.webp" alt="Product Image" id="product-image">
+            
+            
+            <!-- Thumbnails -->
+            <div id="thumbnails-container">
+                <img src="../img/nike.webp" alt="Thumbnail 1" class="thumbnail" data-index="0">
+                <img src="../img/adidas.jpg" alt="Thumbnail 2" class="thumbnail" data-index="1">
+                <img src="../img/estee_lauder.jpg" alt="Thumbnail 3" class="thumbnail" data-index="2">
+                <img src="../img/yonex.webp" alt="Thumbnail 4" class="thumbnail" data-index="3">
+            </div>
+</div>
+            <div id="product-info">
+                <h2 id="product-name">Kamito</h2>
+                <p id="product-description">From Japan</p>
+                <p><strong>Brand:</strong> <span id="product-brand">Kamito</span></p>
+                <p><strong>Price:</strong> <span id="product-price">$29.99</span></p>
+                <p><strong>Category:</strong> <span id="product-category">Category Name</span></p>
+                <p><strong>Stock Level:</strong> <span id="product-quantity">10</span></p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-section">
+            <button id="add-to-cart">Add to Cart</button>
+            <button id="buy-now">Buy Now</button>
+        </div>
+
+        <!-- Flashing message -->
+        <div id="message" class="hidden">Product added to cart!</div>
+    </div>
+
+    <script src="../scripts/productDetail.js"></script>
+</body>
+
+</html>
