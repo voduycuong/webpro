@@ -1,0 +1,72 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: white;
+    background-color: #1E0342; /* Set the background color */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.product-name, .product-price, .quantity-input {
+    margin-right: 10px;
+}
+
+.quantity-input {
+    width: 50px;
+}
+
+.total-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#continue-shopping {
+    background-color: #ff5722;
+    color: white;
+}
+
+#place-order {
+    background-color: #4caf50;
+    color: white;
+}
