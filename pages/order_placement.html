@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="../css/order_placement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -18,54 +20,37 @@
                 <span class="product-name">Product 1</span>
                 <span class="product-price">$10</span>
                 <input type="number" min="0" value="1" class="quantity-input" onchange="updateTotal()">
+                <button class="delete-button" onclick="deleteProduct(this)">
+                    <i class="fa fa-trash"></i>
+                </button>
+                
             </div>
 
             <div class="cart-item" data-price="25">
                 <span class="product-name">Product 2</span>
                 <span class="product-price">$25</span>
                 <input type="number" min="0" value="1" class="quantity-input" onchange="updateTotal()">
+                <button class="delete-button" onclick="deleteProduct(this)">
+                    <i class="fa fa-trash"></i>
+                </button>
+                
             </div>
             <!-- Add more cart items as needed -->
         </div>
 
         <div class="total-section">
-            <span>Total Order Amount:</span>
-            <span id="total-amount">$35</span>
+            <span>Total Order Amount :</span>
+            <span id="total-amount"></span>
         </div>
 
         <div class="button-section">
             <button id="continue-shopping">Continue Shopping</button>
             <button id="place-order">Order</button>
         </div>
+        
     </div>
 
-    <script>
-        function updateTotal() {
-            let total = 0;
-            const cartItems = document.querySelectorAll('.cart-item');
-            cartItems.forEach(item => {
-                const price = parseFloat(item.getAttribute('data-price'));
-                const quantity = parseInt(item.querySelector('.quantity-input').value);
-                
-                // If quantity is zero, set price to zero
-                const itemPrice = (quantity === 0) ? 0 : price * quantity;
-                
-                // Update the total
-                total += itemPrice;
-            });
-            
-            // Update the total amount displayed
-            document.getElementById('total-amount').innerText = `$${total.toFixed(2)}`;
-        }
-
-        document.getElementById('continue-shopping').addEventListener('click', () => {
-            window.location.href = 'store-home.html';
-        });
-
-        document.getElementById('place-order').addEventListener('click', () => {
-            window.location.href = 'thank-you.html';
-        });
-    </script>
+    <script src="../scripts/orderPlacement.js"></script>
 </body>
 
 </html>

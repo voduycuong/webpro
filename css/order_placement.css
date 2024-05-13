@@ -27,19 +27,38 @@ h1 {
     border-radius: 8px;
 }
 
+.product-name{
+    display: block;
+    max-width: 300px;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .cart-item {
     display: flex;
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #e0e0e0;
+    
 }
 
 .product-name, .product-price, .quantity-input {
     margin-right: 10px;
 }
 
+.product-name{
+    width: 250px;
+}
+
+.product-price{
+  width: 50px;
+}
+.total-price{
+    width: 50px;
+}
 .quantity-input {
     width: 50px;
+   
 }
 
 .total-section {
@@ -70,3 +89,27 @@ button {
     background-color: #4caf50;
     color: white;
 }
+
+.cart-item {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: red; /* Red trash icon */
+    font-size: 16px; /* Adjust font size for the trash icon */
+    padding: 5px;
+    width: 20px;
+}
+
+.cart-item:hover .delete-button {
+    display: inline-block;
+}
+

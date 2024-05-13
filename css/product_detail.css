@@ -1,0 +1,139 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: #1E0342;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+
+
+/* Main image and thumbnails */
+#product-detail {
+    display: flex; /* Display the main image and product info side by side */
+}
+
+/* Main image and thumbnails */
+#image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#product-image {
+    width: 400px; /* Set a consistent width for the main image */
+    height: 300px; /* Set a consistent height for the main image */
+    object-fit: contain; /* Ensure the image maintains its aspect ratio and fits the defined dimensions */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#thumbnails-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 70px; /* Thumbnail width */
+    height: 70px; /* Thumbnail height */
+    margin-right: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+/* Thumbnail hover effect */
+.thumbnail:hover {
+    border-color: #1E0342;
+}
+
+/* Cart button styles */
+#cart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px; /* Add margin to separate it from the h1 */
+}
+
+#cart-button img {
+    width: 30px; /* Adjust the width and height according to your cart logo */
+    height: auto;
+}
+
+.cart-button:hover {
+    opacity: 0.8; 
+    
+}
+
+
+/* Product information container */
+#product-info {
+    flex: 1; /* Take up one part of the width */
+    padding-left: 20px; /* Add space between the main image and product info */
+}
+
+.button-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-to-cart {
+    background-color: #4caf50;
+    color: white;
+}
+
+#buy-now {
+    background-color: #ff5722;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+#message {
+    margin-top: 10px;
+    padding: 10px;
+    
+    border-radius: 5px;
+}
+
+.product-info h2, p{
+    margin-bottom: 20px;
+}

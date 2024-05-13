@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="../css/product_detail.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+        <h1>Product Detail</h1>
+        <button id="cart-button" class="cart-button"><img src="https://emojicdn.elk.sh/🛒" alt="Cart Emoji"></button>
+</header>
+        <!-- Product details -->
+        <div id="product-detail">
+            <div id="image-container">
+                <!-- Main product image -->
+                <img src="" alt="Product Image" id="product-image">
+            
+            
+            <!-- Thumbnails -->
+            <div id="thumbnails-container">
+                <img src="" alt="Thumbnail 1" class="thumbnail" data-index="0">
+                <img src="" alt="Thumbnail 2" class="thumbnail" data-index="1">
+                <img src="" alt="Thumbnail 3" class="thumbnail" data-index="2">
+                <img src="" alt="Thumbnail 4" class="thumbnail" data-index="3">
+            </div>
+</div>
+            <div id="product-info" class="product-info">
+                <h2 id="product-name"></h2>
+                <p><strong>Description:</strong> <span id="product-description"></span></p>
+                <p><strong>Brand:</strong> <span id="product-brand"></span></p>
+                <p><strong>Price ($):</strong> <span id="product-price"></span></p>
+                <p><strong>Category:</strong> <span id="product-category"></span></p>
+                <p><strong>Stock Level:</strong> <span id="product-quantity"></span></p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-section">
+            <button id="add-to-cart">Add to Cart</button>
+            <button id="buy-now">Buy Now</button>
+        </div>
+
+        <!-- Flashing message -->
+        <div id="message" class="hidden">Product added to cart!</div>
+    </div>
+
+    <script type="module" src="../scripts/productDetail.js"></script>
+
+
+</body>
+
+</html>

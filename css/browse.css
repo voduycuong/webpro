@@ -1,203 +1,28 @@
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5; /* Light background color */
-}
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
 
-/* Header styling */
-header {
-    background-color: #2874F0; /* Lazada blue */
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light box shadow */
-}
-
-header img {
-    height: 50px;
-}
-
-nav a {
-    margin: 0 10px;
-    color: #fff;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Dropdown menu styling */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    z-index: 1;
-}
-
-.dropdown-content a {
-    padding: 10px 20px;
-    display: block;
-    color: #000;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1; /* Light gray on hover */
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Main content styling */
-main {
-    padding: 20px;
-}
-
-/* Section styling */
-section {
-    margin-bottom: 20px; /* Space between sections */
-    background-color: #fff;
-    border-radius: 4px; /* Rounded corners */
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light box shadow */
-}
-
-/* Section titles styling */
-section h2 {
-    width: 100%; /* Make the title span the whole section */
-    margin-bottom: 10px;
-    color: #2874F0; /* Lazada blue */
-}
-
-/* Search bar styling */
-input#storeSearch {
-    width: 95%; /* Fill the width of the section */
+.search-category input, .search-store input {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 20px; /* Space below the search bar */
-    border-radius: 4px; /* Rounded corners */
-    border: 1px solid #ccc; /* Light border */
-    outline: none; /* Remove outline on focus */
-    font-size: 16px; /* Font size */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
+    margin-bottom: 10px;
 }
 
-/* Stores list styling */
-#stores-list {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Display 7 stores in a line */
-    gap: 10px; /* Space between stores */
-}
-/* Styling for stores in each category */
-.category .stores-list {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Display 7 stores in a line */
-    gap: 10px; /* Space between stores */
+.product-section, .store-section {
+    margin-top: 30px; /* Add margin at the top */
 }
 
-/* Store div styling */
-.store {
-    display: flex;
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center; /* Center-align elements */
-    border: 1px solid #e0e0e0; /* Light gray border */
-    padding: 10px; /* Padding for space */
-    border-radius: 4px; /* Rounded corners */
-    text-align: center;
+.product {
+    display: inline-block;
+    margin-right: 20px;
 }
 
-/* Styling for each store image */
-.store img {
-    width: 100%; /* Make images fill the width of div */
-    height: 60px; /* Maintain aspect ratio */
-    margin-bottom: 5px; /* Space between image and text */
+.product img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: solid 1px #1E0342;
 }
 
-/* Styling for the "show All Stores" button */
-#show-all-button {
-    display: block; /* Initially visible */
-    margin-top: 20px; /* Add space above the button */
-    padding: 10px 20px; /* Padding for button */
-    background-color: #2874F0; /* Lazada blue */
-    color: #fff;
-    border: none;
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer;
-    font-size: 16px; /* Font size */
-}
-
-/* Styling for the "Show Less" button */
-#show-less-button {
-    display: none; /* Initially hidden */
-    margin-top: 20px; /* Add space above the button */
-    padding: 10px 20px; /* Padding for button */
-    background-color: #2874F0; /* Lazada blue */
-    color: #fff;
-    border: none;
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer;
-    font-size: 16px; /* Font size */
-}
-
-/* Button hover effect */
-#show-all-button:hover, #show-less-button:hover {
-    background-color: #1e50d4; /* Darker blue on hover */
-}
-
-
-
-/* Footer styling */
-footer {
-    background-color: #f1f1f1; /* Light gray background */
-    padding: 10px 20px;
-    text-align: center;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Light box shadow */
-}
-
-footer nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-footer a {
-    color: #2874F0; /* Lazada blue */
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Styling for the Back to Top button */
-.back-to-top {
-    display: none; /* Hidden by default */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #2874F0; /* Lazada blue */
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.back-to-top:hover {
-    background-color: #1e50d4; /* Darker blue on hover */
-    
+.hidden {
+    display: none;
 }
