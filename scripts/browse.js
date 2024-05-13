@@ -59,4 +59,17 @@ function showLessStores() {
 // Set up initial store and button visibility when the page loads
 document.addEventListener("DOMContentLoaded", initialStoreSetup);
 
+// Insert header and footer
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
 
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+});

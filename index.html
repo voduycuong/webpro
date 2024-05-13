@@ -3,24 +3,13 @@
 
 <head>
     <title>Mall Home</title>
-    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/scripts/index.js"></script>
 </head>
 
 <body>
     <!-- Header -->
-    <header>
-        <img src="mall_logo.png" alt="Mall Logo">
-        <h1>LAZADA</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="/pages/about_us.html">About Us</a>
-            <a href="/pages/fees.html">Fees</a>
-            <a href="/pages/login.html">My Account</a>
-            <a href="/pages/browse.html">Browse</a>
-            <a href="/pages/faq.html">FAQs</a>
-            <a href="/pages/contact.html">Contact</a>
-        </nav>
-    </header>
+    <div id="header"></div>
 
     <!-- Main content -->
     <main>
@@ -93,33 +82,7 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <nav>
-            <a href="#">Copyright</a>
-            <a href="#">ToS</a>
-            <a href="#">Privacy Policy</a>
-        </nav>
-        <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
-    </footer>
-    <script>
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-                document.querySelector('.back-to-top').style.display = "block";
-            } else {
-                document.querySelector('.back-to-top').style.display = "none";
-            }
-        }
-
-        function scrollToTop() {
-            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            if (currentScroll > 0) {
-                window.requestAnimationFrame(scrollToTop);
-                window.scrollTo(0, currentScroll - currentScroll / 10); // Adjust this division factor for smoothness
-            }
-        }
-    </script>
+    <div id="footer"></div>
 </body>
 
 </html>
