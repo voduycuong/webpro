@@ -49,38 +49,6 @@ function updateProductDetail(data) {
     }
 }
 
-// Function to fetch product data
-async function getProductData(productId) {
-    try {
-        const docRef = doc(db, "featuredProducts", productId);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-            const data = docSnap.data();
-            updateProductDetail(data);
-        } else {
-            console.log("No such document!");
-        }
-    } catch (error) {
-        console.error("Error fetching product data:", error);
-    }
-}
-
-// Function to update product details on the page
-function updateProductDetail(data) {
-    document.getElementById("product-name").textContent = data.name;
-    document.getElementById("product-description").textContent = data.description;
-    document.getElementById("product-brand").textContent = data.brand;
-    document.getElementById("product-price").textContent = data.price;
-    document.getElementById("product-category").textContent = data.category;
-    document.getElementById("product-quantity").textContent = data.quantity;
-    // Update product image and thumbnails (assuming you have the image URLs in the 'images' array)
-    document.getElementById("product-image").src = data.images[0]; // Set main product image
-    const thumbnails = document.querySelectorAll(".thumbnail");
-    for (let i = 0; i < thumbnails.length; i++) {
-        thumbnails[i].src = data.images[i];
-    }
-}
-
 // Function to add the current product to the cart
 function addToCart(productId, productName, productPrice) {
     const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
