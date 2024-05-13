@@ -1,101 +1,137 @@
-// Constant for order data storage key in local storage
-const orderStorageKey = 'orderData';
+// Import Firebase SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
-// Function to retrieve order data from storage
-function getOrderData() {
-    const data = localStorage.getItem(orderStorageKey);
-    return data ? JSON.parse(data) : [];
+const firebaseConfig = {
+    apiKey: "AIzaSyC1lU93LyUOig7V-j1bmQuK3J3EGG7lzP0",
+    authDomain: "bluegame-28f86.firebaseapp.com",
+    databaseURL: "https://bluegame-28f86-default-rtdb.firebaseio.com",
+    projectId: "bluegame-28f86",
+    storageBucket: "bluegame-28f86.appspot.com",
+    messagingSenderId: "811572790555",
+    appId: "1:811572790555:web:efb6caa094651088e27fbe",
+    measurementId: "G-E002PST6WK"
+  };
+
+// Initialize Firebase app
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Function to fetch product data
+async function getProductData(productId) {
+    try {
+        const docRef = doc(db, "Products", productId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            updateProductDetail(data);
+        } else {
+            console.log("No such document!");
+        }
+    } catch (error) {
+        console.error("Error fetching product data:", error);
+    }
 }
 
-// Function to save order data to storage
-function saveOrderData(data) {
-    localStorage.setItem(orderStorageKey, JSON.stringify(data));
+// Function to update product details on the page
+function updateProductDetail(data) {
+    document.getElementById("product-name").textContent = data.name;
+    document.getElementById("product-description").textContent = data.description;
+    document.getElementById("product-brand").textContent = data.brand;
+    document.getElementById("product-price").textContent = data.price;
+    document.getElementById("product-category").textContent = data.category;
+    document.getElementById("product-quantity").textContent = data.quantity;
+    // Update product image and thumbnails (assuming you have the image URLs in the 'images' array)
+    document.getElementById("product-image").src = data.images[0]; // Set main product image
+    const thumbnails = document.querySelectorAll(".thumbnail");
+    for (let i = 0; i < thumbnails.length; i++) {
+        thumbnails[i].src = data.images[i];
+    }
 }
 
-// Function to display the flashing message
-function displayFlashingMessage() {
-    // Retrieve the message element
-    const messageElement = document.getElementById('message');
-    
-    // Remove the 'hidden' class and set display to 'block'
-    messageElement.classList.remove('hidden');
-    messageElement.style.display = 'block';
-
-    // Hide the message after 3 seconds
-    setTimeout(() => {
-        messageElement.classList.add('hidden');
-        messageElement.style.display = 'none';
-    }, 1000);
+// Function to fetch product data
+async function getProductData(productId) {
+    try {
+        const docRef = doc(db, "featuredProducts", productId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            updateProductDetail(data);
+        } else {
+            console.log("No such document!");
+        }
+    } catch (error) {
+        console.error("Error fetching product data:", error);
+    }
 }
 
-// Function to add the current product details to the order data
-function addProductToOrder() {
-    // Get product details from the product detail page
-    const productName = document.getElementById('product-name').innerText;
-    const productPrice = parseFloat(document.getElementById('product-price').innerText.replace('$', ''));
-    const productQuantity = 1; // Assuming quantity is 1 for Add to Cart
+// Function to update product details on the page
+function updateProductDetail(data) {
+    document.getElementById("product-name").textContent = data.name;
+    document.getElementById("product-description").textContent = data.description;
+    document.getElementById("product-brand").textContent = data.brand;
+    document.getElementById("product-price").textContent = data.price;
+    document.getElementById("product-category").textContent = data.category;
+    document.getElementById("product-quantity").textContent = data.quantity;
+    // Update product image and thumbnails (assuming you have the image URLs in the 'images' array)
+    document.getElementById("product-image").src = data.images[0]; // Set main product image
+    const thumbnails = document.querySelectorAll(".thumbnail");
+    for (let i = 0; i < thumbnails.length; i++) {
+        thumbnails[i].src = data.images[i];
+    }
+}
 
-    // Create a product object with the relevant details
-    const product = {
-        name: productName,
-        price: productPrice,
-        quantity: productQuantity,
-    };
-
-    // Retrieve current order data from storage
-    let orderData = getOrderData();
-
-    // Add the product to the order data
-    orderData.push(product);
-
-    // Save the updated order data back to storage
-    saveOrderData(orderData);
-
+// Function to add the current product to the cart
+function addToCart(productId, productName, productPrice) {
+    const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
+    let cart = localStorage.getItem('orderData') ? JSON.parse(localStorage.getItem('orderData')) : [];
+    cart.push(product);
+    localStorage.setItem('orderData', JSON.stringify(cart));
     console.log('Product added to cart:', product);
-
-    // Display the flashing message
-    displayFlashingMessage();
 }
 
-// Add event listener to the "Add to Cart" button
-document.getElementById('add-to-cart').addEventListener('click', addProductToOrder);
-
-// Function to handle the Buy Now action
-function buyNow() {
-    // Add the current product to the order data
-    addProductToOrder();
-
-    // Redirect to the Order Placement page
-    window.location.href = 'order_placement.html';
-}
-
-// Add event listener to the "Buy Now" button
-document.getElementById('buy-now').addEventListener('click', buyNow);
-
-// Array of product images
-const productImages = [
-    "../img/nike.webp",
-    "../img/adidas.jpg",
-    "../img/estee_lauder.jpg",
-    "../img/yonex.webp"
-];
-
-// Function to change the main image when a thumbnail is clicked
-function changeMainImage(event) {
-    const index = parseInt(event.target.getAttribute('data-index'));
+// Function to update main product image with the clicked thumbnail
+function updateMainImage(event) {
+    const clickedThumbnail = event.target;
     const mainImage = document.getElementById('product-image');
-    mainImage.src = productImages[index];
+    mainImage.src = clickedThumbnail.src;
 }
 
-// Add event listeners to the thumbnails
-const thumbnails = document.querySelectorAll('.thumbnail');
-thumbnails.forEach((thumbnail) => {
-    thumbnail.addEventListener('click', changeMainImage);
+// Function to extract URL parameters
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get product ID from URL parameter
+    const productId = getParameterByName('id');
+
+    // Call getProductData function with the product ID
+    getProductData(productId);
+
+    // Add event listener to the "Add to Cart" button
+    const addToCartButton = document.getElementById('add-to-cart');
+    addToCartButton.addEventListener('click', function() {
+        const productName = document.getElementById('product-name').textContent;
+        const productPrice = document.getElementById('product-price').textContent;
+        addToCart(productId, productName, productPrice);
+    });
+
+    // Add event listener to the cart button to move to the order placement page
+    const cartButton = document.querySelector('.cart-button img');
+    cartButton.addEventListener('click', function() {
+        window.location.href = '../pages/order_placement.html';
+    });
+
+    // Add event listener to each thumbnail image
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', updateMainImage);
+    });
 });
-
-// Set the initial main image when the page loads
-window.onload = function() {
-    document.getElementById('product-image').src = productImages[0];
-};
-
-

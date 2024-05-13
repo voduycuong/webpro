@@ -20,25 +20,34 @@
                 <span class="product-name">Product 1</span>
                 <span class="product-price">$10</span>
                 <input type="number" min="0" value="1" class="quantity-input" onchange="updateTotal()">
+                <button class="delete-button" onclick="deleteProduct(this)">
+                    <i class="fa fa-trash"></i>
+                </button>
+                
             </div>
 
             <div class="cart-item" data-price="25">
                 <span class="product-name">Product 2</span>
                 <span class="product-price">$25</span>
                 <input type="number" min="0" value="1" class="quantity-input" onchange="updateTotal()">
+                <button class="delete-button" onclick="deleteProduct(this)">
+                    <i class="fa fa-trash"></i>
+                </button>
+                
             </div>
             <!-- Add more cart items as needed -->
         </div>
 
         <div class="total-section">
-            <span>Total Order Amount:</span>
-            <span id="total-amount">$35</span>
+            <span>Total Order Amount :</span>
+            <span id="total-amount"></span>
         </div>
 
         <div class="button-section">
             <button id="continue-shopping">Continue Shopping</button>
             <button id="place-order">Order</button>
         </div>
+        
     </div>
 
     <script src="../scripts/orderPlacement.js"></script>

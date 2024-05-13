@@ -1,3 +1,20 @@
+// Get the "Continue Shopping" button element
+const continueShoppingButton = document.getElementById('continue-shopping');
+
+// Add click event listener to the button
+continueShoppingButton.addEventListener('click', function() {
+    // Redirect to the store home page
+    window.location.href = '../pages/store_home_page.html';
+});
+// Get the "Continue Shopping" button element
+const orderButton = document.getElementById('place-order');
+
+// Add click event listener to the button
+orderButton.addEventListener('click', function() {
+    // Redirect to the store home page
+    alert('Thank you!');
+});
+
 // Constant for order data storage key in local storage
 const orderStorageKey = 'orderData';
 
@@ -11,8 +28,6 @@ function getOrderData() {
 function saveOrderData(data) {
     localStorage.setItem(orderStorageKey, JSON.stringify(data));
 }
-
-// Function to delete a product from the cart
 function deleteProduct(index) {
     // Retrieve current order data from storage
     let orderData = getOrderData();
@@ -26,6 +41,7 @@ function deleteProduct(index) {
     // Refresh the display of order data
     displayOrderData();
 }
+
 
 // Function to display order data on the Order Placement page
 function displayOrderData() {
@@ -46,71 +62,46 @@ function displayOrderData() {
         // Create a cart item element
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
-        cartItem.setAttribute('data-price', product.price);
 
-        // Create a quantity input and add an event listener
-        const quantityInput = document.createElement('input');
-        quantityInput.type = 'number';
-        quantityInput.min = '0';
-        quantityInput.value = product.quantity;
-        quantityInput.className = 'quantity-input';
-        
-        // Add event listener to handle quantity change
-        quantityInput.addEventListener('change', (event) => {
-            // Get the new quantity
-            const newQuantity = parseInt(event.target.value);
-            
-            // Update the product quantity in order data
-            orderData[index].quantity = newQuantity;
-            
-            // Save the updated order data back to storage
-            saveOrderData(orderData);
-            
-            // Refresh the total amount displayed
-            updateTotalAmount();
-        });
+        // Calculate the total price for the current product
+        const totalPrice = product.price * product.quantity;
 
-        // Add product details and quantity input
+        // Display product details and total price
         cartItem.innerHTML = `
             <span class="product-name">${product.name}</span>
-            <span class="product-price">$${product.price.toFixed(2)}</span>
+            <span class="product-price">${product.price}</span>
+            <input type="number" min="0" value="${product.quantity}" class="quantity-input" onchange="updateQuantity(${index}, this.value)">
+            <button class="delete-button" onclick="deleteProduct(${index})"><i class="fas fa-trash"></i></button>
+            <span class="total-price">${totalPrice}</span>
         `;
-        cartItem.appendChild(quantityInput);
-
-        // Create the delete button with a trash icon
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'delete-button';
-        deleteButton.innerHTML = '<i class="fa fa-trash"></i>'; // Trash icon
-        deleteButton.onclick = () => deleteProduct(index);
-
-        // Append the delete button to the cart item
-        cartItem.appendChild(deleteButton);
 
         // Append the cart item to the cart summary container
         cartSummary.appendChild(cartItem);
 
-        // Calculate the total amount based on the product's price and quantity
-        totalAmount += product.price * product.quantity;
+        // Add the current product's total price to the overall total amount
+        totalAmount += totalPrice;
     });
 
     // Update the total amount displayed
     document.getElementById('total-amount').innerText = `$${totalAmount.toFixed(2)}`;
 }
 
-// Function to update the total amount displayed
-function updateTotalAmount() {
+
+// Function to update the quantity of a product in the order data
+function updateQuantity(index, newQuantity) {
     // Retrieve order data from local storage
-    const orderData = getOrderData();
+    let orderData = getOrderData();
 
-    // Calculate the total amount
-    let totalAmount = 0;
-    orderData.forEach((product) => {
-        totalAmount += product.price * product.quantity;
-    });
+    // Update the quantity of the product at the specified index
+    orderData[index].quantity = parseInt(newQuantity);
 
-    // Update the total amount displayed
-    document.getElementById('total-amount').innerText = `$${totalAmount.toFixed(2)}`;
+    // Save the updated order data back to storage
+    saveOrderData(orderData);
+
+    // Refresh the display of order data
+    displayOrderData();
 }
+
 
 // Call the function to display the order data when the page loads
 window.onload = displayOrderData;

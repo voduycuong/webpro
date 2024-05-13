@@ -1,59 +1,119 @@
-* {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+header {
+    background-color: #1E0342;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header,
-footer {
-    background-color: #4b3c3c;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
 }
 
 main {
     padding: 20px;
 }
 
-.product-section {
-    margin-bottom: 40px;
+section {
+    margin-bottom: 30px;
 }
 
-.product-section h2 {
+h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
+.store, .product {
+    display: inline-block;
+    margin-right: 20px;
 }
 
-.product-item {
-    width: calc(20% - 20px);
-    margin: 0 10px 20px;
+.store img, .product img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: solid 1px #1E0342;
 }
 
-.product-item img {
-    width: 100%;
-    border-radius: 5px;
-}
-
-.product-item h3 {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-.product-item p {
-    font-size: 16px;
-    margin-top: 5px;
+.logo img{
+    width: 100px;
+    height: 100px;
+    border-radius: 30%;
+    padding: 10px;
+    border: solid 1px #1E0342;
 }
 
 footer {
-    margin-top: 40px;
+    background-color: #1E0342;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+footer nav ul li:last-child {
+    margin-right: 0;
+}
+.store p, .product p{
+    text-align: center;
+}
+
+.web-name p{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Add your CSS styles for product sections and items here */
+.product-section {
+    margin-bottom: 20px;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+.product p {
+    margin: 5px 0;
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.product-name {
+    color: #1E0342;
+    font-weight: bold;
+}
+
+.product-price{
+    color: red;
 }

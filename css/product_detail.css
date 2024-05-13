@@ -19,13 +19,18 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    margin-bottom: 20px;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: white;
     background-color: #1E0342;
     padding: 10px;
     border-radius: 8px;
+    margin-bottom: 20px;
 }
+
+
 
 /* Main image and thumbnails */
 #product-detail {
@@ -70,6 +75,24 @@ h1 {
     border-color: #1E0342;
 }
 
+/* Cart button styles */
+#cart-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px; /* Add margin to separate it from the h1 */
+}
+
+#cart-button img {
+    width: 30px; /* Adjust the width and height according to your cart logo */
+    height: auto;
+}
+
+.cart-button:hover {
+    opacity: 0.8; 
+    
+}
+
 
 /* Product information container */
 #product-info {
@@ -107,7 +130,10 @@ button {
 #message {
     margin-top: 10px;
     padding: 10px;
-    background-color: #ffeb3b;
-    border: 1px solid #ffeb3b;
+    
     border-radius: 5px;
+}
+
+.product-info h2, p{
+    margin-bottom: 20px;
 }

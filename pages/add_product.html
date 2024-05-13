@@ -15,65 +15,67 @@
         <form id="add-product-form" onsubmit="addProduct(event)">
             <div class="form-group">
                 <label for="product-name">Name:</label>
-                <input type="text" id="product-name" name="name" required>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="product-brand">Brand:</label>
+                <input type="text" id="brand" name="brand" required>
             </div>
 
             <div class="form-group">
                 <label for="product-price">Price:</label>
-                <input type="number" id="product-price" name="price" step="0.01" required>
+                <input type="number" id="price" name="price" step="0.01" required>
             </div>
 
             <div class="form-group">
                 <label for="product-description">Description:</label>
-                <textarea id="product-description" name="description" rows="4" required></textarea>
+                <textarea id="description" name="description" rows="4" required></textarea>
             </div>
 
             <div class="form-group">
                 <label for="product-category">Category:</label>
-                <select id="product-category" name="category" required>
-                    <option value="video game">Video Game</option>
-                    <option value="ps5">PS5</option>
-                    <option value="ps4">PS4</option>
-                    <option value="xbox">Xbox</option>
-                    <!-- Add more categories as needed -->
+                <select id="category" name="category" required>
+                    <option value="Monitor">Monitor</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Headphone">Headphone</option>
+                    <option value="Mouse">Mouse</option>
+                    <option value="Gaming Chair">Gaming Chair</option>
+                    <option value="PC">PC</option>
+                    <option value="Video Card">Video Card</option>
+                    <option value="Keyboard">Keyboard</option>
+                    <option value="Speaker">Speaker</option>
+                    <option value="RAM">RAM</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="product-quantity">Quantity/Stock Level:</label>
-                <input type="number" id="product-quantity" name="quantity" min="0" required>
+                <input type="number" id="quantity" name="quantity" min="0" required>
             </div>
 
+            <!-- Add 4 image input fields and frames -->
             <div class="form-group">
-                <label for="product-image">Main Image:</label>
-                <input type="file" id="product-image" name="image" accept="image/*" required>
+                <label>Images (4 required):</label>
+                <div class="image-container">
+                    <div class="image-frame" id="frame1"></div>
+                    <input type="file" id="image1" name="images[]" accept="image/*" hidden>
+                    <div class="image-frame" id="frame2"></div>
+                    <input type="file" id="image2" name="images[]" accept="image/*" hidden>
+                    <div class="image-frame" id="frame3"></div>
+                    <input type="file" id="image3" name="images[]" accept="image/*" hidden>
+                    <div class="image-frame" id="frame4"></div>
+                    <input type="file" id="image4" name="images[]" accept="image/*" hidden>
+                </div>
             </div>
 
-            <button type="submit">Add Product</button>
+            <button type="submit" id="submit">Add Product</button>
         </form>
     </div>
 
-    <script>
-        function addProduct(event) {
-            event.preventDefault(); // Prevent form submission
-            const form = document.getElementById('add-product-form');
-            
-            // Gather the form data
-            const formData = new FormData(form);
+    <!-- Include the addProduct.js file -->
+    <script type="module" src="../scripts/addProduct.js"></script>
 
-            // Optionally, you can process the form data, send it to the server, etc.
-            // For demonstration, we'll just log the data
-            formData.forEach((value, key) => {
-                console.log(`${key}: ${value}`);
-            });
-
-            // Notify the user that the product has been added
-            alert('Product has been added successfully!');
-            
-            // Optionally, you can reset the form or navigate to another page
-            form.reset();
-        }
-    </script>
 </body>
 
 </html>
