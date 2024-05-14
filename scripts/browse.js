@@ -11,7 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "811572790555",
     appId: "1:811572790555:web:efb6caa094651088e27fbe",
     measurementId: "G-E002PST6WK"
-  };
+};
 
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
@@ -156,14 +156,14 @@ function filterProductsByCategory(searchTerm) {
 
 // Search store input field
 const storeSearchInput = document.getElementById('store-search-input');
-storeSearchInput.addEventListener('input', function(event) {
+storeSearchInput.addEventListener('input', function (event) {
     const searchTerm = event.target.value;
     filterStores(searchTerm);
 });
 
 // Search category input field
 const categorySearchInput = document.getElementById('category-search-input');
-categorySearchInput.addEventListener('input', function(event) {
+categorySearchInput.addEventListener('input', function (event) {
     const searchTerm = event.target.value;
     filterProductsByCategory(searchTerm);
 });
@@ -172,7 +172,7 @@ categorySearchInput.addEventListener('input', function(event) {
 const continueShoppingButton = document.getElementById('home');
 
 // Add click event listener to the button
-continueShoppingButton.addEventListener('click', function() {
+continueShoppingButton.addEventListener('click', function () {
     // Redirect to the store home page
     window.location.href = '../pages/store_home_page.html';
 });
@@ -181,6 +181,19 @@ continueShoppingButton.addEventListener('click', function() {
 const browseButton = document.getElementById('browse');
 
 // Add click event listener to the button
-browseButton.addEventListener('click', function() {
+browseButton.addEventListener('click', function () {
     alert('You are already here!');
+});// Insert header and footer
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
 });
