@@ -12,7 +12,8 @@ a {
 
 /* Header styling */
 header {
-    background-color: #2874F0; /* Lazada blue */
+    background-color: #2874F0;
+    /* Lazada blue */
     color: #fff;
     padding: 10px 20px;
     display: flex;
@@ -40,51 +41,70 @@ main {
 
 /* Section styling */
 section {
-    margin-bottom: 20px; /* Space between sections */
-    border: 1px solid #e0e0e0; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px;
+    /* Space between sections */
+    border: 1px solid #e0e0e0;
+    /* Light gray border */
+    border-radius: 5px;
+    /* Rounded corners */
     padding: 15px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light box shadow */
-    display: flex; /* Display each section as a flex container */
-    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
-    gap: 20px; /* Space between items in the section */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Light box shadow */
+    display: flex;
+    /* Display each section as a flex container */
+    flex-wrap: wrap;
+    /* Allow items to wrap to the next line if needed */
+    gap: 20px;
+    /* Space between items in the section */
 }
 
 /* Section titles styling */
 section h2 {
-    width: 100%; /* Make the title span the whole section */
+    width: 100%;
+    /* Make the title span the whole section */
     margin-bottom: 10px;
-    color: #2874F0; /* Lazada blue */
+    color: #2874F0;
+    /* Lazada blue */
 }
 
 /* Make each div within a section display side by side */
-section > div {
-    flex: 1; /* Allow each div to grow equally within the section */
+section>div {
+    flex: 1;
+    /* Allow each div to grow equally within the section */
     display: flex;
-    flex-direction: column; /* Stack image and text vertically within each div */
-    align-items: center; /* Center align the content within each div */
-    max-width: 150px; /* Set the maximum width of each div */
-    border-right: 1px solid #e0e0e0; /* Separate divs with a straight line */
-    padding-right: 10px; /* Padding for space inside each div */
+    flex-direction: column;
+    /* Stack image and text vertically within each div */
+    align-items: center;
+    /* Center align the content within each div */
+    max-width: 150px;
+    /* Set the maximum width of each div */
+    border-right: 1px solid #e0e0e0;
+    /* Separate divs with a straight line */
+    padding-right: 10px;
+    /* Padding for space inside each div */
     text-align: center;
 }
 
 /* Remove the right border from the last div in each section */
-section > div:last-child {
+section>div:last-child {
     border-right: none;
 }
 
 /* Styling for each product image */
-section > div img {
-    width: 100%; /* Set the image width to fill the div */
-    height: 60px; /* Keep the image aspect ratio */
-    margin-bottom: 5px; /* Space between image and text */
+section>div img {
+    width: 100%;
+    /* Set the image width to fill the div */
+    height: 60px;
+    /* Keep the image aspect ratio */
+    margin-bottom: 5px;
+    /* Space between image and text */
 }
 
 /* Footer styling */
 footer {
-    background-color: #f1f1f1; /* Light gray background */
+    background-color: #f1f1f1;
+    /* Light gray background */
     padding: 10px 20px;
     text-align: center;
 }
@@ -96,7 +116,8 @@ footer nav {
 }
 
 footer a {
-    color: #2874F0; /* Lazada blue */
+    color: #2874F0;
+    /* Lazada blue */
 }
 
 footer a:hover {
@@ -114,4 +135,60 @@ footer a:hover {
     border-radius: 5px;
     cursor: pointer;
     display: none;
+}
+
+
+/* Adjust dynamic pages */
+@import url('/css/about_us.css');
+@import url('/css/add_product.css');
+@import url('/css/browse.css');
+@import url('/css/contact.css');
+@import url('/css/copyright.css');
+@import url('/css/dir.txt');
+@import url('/css/faq.css');
+@import url('/css/fees.css');
+@import url('/css/footer.css');
+@import url('/css/header.css');
+@import url('/css/login.css');
+@import url('/css/order_placement.css');
+@import url('/css/product_detail.css');
+@import url('/css/store_home_page.css');
+@import url('/css/styles.css');
+@import url('/css/user_register.css');
+
+/* Responsive styles */
+@media (min-width: 1200px) {
+    body {
+        background-color: #f0f0f0;
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        background-color: #e0e0e0;
+    }
+
+    main {
+        padding: 2em;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        background-color: #d0d0d0;
+    }
+
+    header,
+    footer {
+        padding: 0.5em 0;
+    }
+
+    main {
+        padding: 1em;
+    }
 }

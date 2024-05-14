@@ -1,0 +1,52 @@
+@import url('/css/about_us.css');
+@import url('/css/add_product.css');
+@import url('/css/browse.css');
+@import url('/css/contact.css');
+@import url('/css/copyright.css');
+@import url('/css/dir.txt');
+@import url('/css/faq.css');
+@import url('/css/fees.css');
+@import url('/css/footer.css');
+@import url('/css/header.css');
+@import url('/css/login.css');
+@import url('/css/order_placement.css');
+@import url('/css/product_detail.css');
+@import url('/css/store_home_page.css');
+@import url('/css/styles.css');
+@import url('/css/user_register.css');
+
+/* Responsive styles */
+@media (min-width: 1200px) {
+    body {
+        background-color: #f0f0f0;
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        background-color: #e0e0e0;
+    }
+
+    main {
+        padding: 2em;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        background-color: #d0d0d0;
+    }
+
+    header, footer {
+        padding: 0.5em 0;
+    }
+
+    main {
+        padding: 1em;
+    }
+}
