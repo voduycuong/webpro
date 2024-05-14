@@ -27,6 +27,47 @@ async function fetchProducts() {
     });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger-menu');
+  const navLinks = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+      if (navLinks.style.display === 'flex') {
+          navLinks.style.display = 'none';
+      } else {
+          navLinks.style.display = 'flex';
+      }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const viewMoreBtn = document.getElementById('view-more-btn');
+  const products = document.querySelectorAll('.product');
+  const productsToShow = 20; // Number of products to show initially
+  let visibleProducts = productsToShow;
+
+  // Initially hide all products beyond the limit
+  products.forEach((product, index) => {
+      if (index >= productsToShow) {
+          product.style.display = 'none';
+      }
+  });
+
+  // Event listener for the "View More" button
+  viewMoreBtn.addEventListener('click', () => {
+      // Show the next batch of products
+      for (let i = visibleProducts; i < visibleProducts + productsToShow && i < products.length; i++) {
+          products[i].style.display = 'block';
+      }
+      visibleProducts += productsToShow;
+
+      // Hide the "View More" button if all products are visible
+      if (visibleProducts >= products.length) {
+          viewMoreBtn.style.display = 'none';
+      }
+  });
+});
+
 // Function to display product on the page
 function displayProduct(product, productId) {
   // Create product element
