@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mall Home</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Link to the CSS file -->
+    <script src="/scripts/userProfile.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="mall_logo.png" alt="Mall Logo">
+        <h1>LAZADA</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="/pages/about_us.html">About Us</a>
+            <a href="/pages/fees.html">Fees</a>
+            <a href="/pages/login.html">My Account</a>
+            <a href="/pages/browse.html">Browse</a>
+            <a href="/pages/faq.html">FAQs</a>
+            <a href="/pages/contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <!-- Check if user is logged in -->
+        <section id="user-info" style="display: none;">
+            <!-- Display user information here -->
+            <h2>User Information</h2>
+            <img id="profilePicture" src="" alt="Profile Picture">
+            <p id="firstName"></p>
+            <p id="lastName"></p>
+            <p id="email"></p>
+            <p id="address"></p>
+            <p id="city"></p>
+            <p id="zipcode"></p>
+            <p id="country"></p>
+
+        </section>
+
+        <!-- Login section -->
+        <section id="login-section">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="email-phone">Email:</label>
+                <input type="text" id="email-phone" name="email-phone" required><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <button onclick="login()">Login</button>
+            </form>
+            <p><a href="#">Forgot Password</a> | <a href="/pages/user_register.html">Register</a></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <nav>
+            <a href="#">Copyright</a>
+            <a href="#">ToS</a>
+            <a href="#">Privacy Policy</a>
+        </nav>
+        <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+    </footer>
+    <!-- <script>
+        // Mock user data
+        const user = {
+            fullname: "John Doe",
+            email: "john@example.com",
+            phone: "123-456-7890",
+            profilePic: "profile.jpg"
+        };
+
+        const userInfoSection = document.getElementById('user-info');
+        const loginSection = document.getElementById('login-section');
+        const loginForm = document.getElementById('login-form');
+        const userFullName = document.getElementById('user-fullname');
+        const userEmail = document.getElementById('user-email');
+        const userPhone = document.getElementById('user-phone');
+        const userProfilePic = document.getElementById('user-profile-pic');
+
+        // Function to check if user is logged in
+        function isLoggedIn() {
+            // You can implement your login check mechanism here, for demo purpose always returning true
+            return true;
+        }
+
+        // Function to display user information
+        function displayUserInfo() {
+            userInfoSection.style.display = 'block';
+            loginSection.style.display = 'none';
+
+            // Display user information
+            userFullName.textContent = `Full Name: ${user.fullname}`;
+            userEmail.textContent = `Email: ${user.email}`;
+            userPhone.textContent = `Phone: ${user.phone}`;
+            userProfilePic.src = user.profilePic;
+        }
+
+        // Function to handle login form submission
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            // Here you can implement your login logic, for demo purpose let's assume user is logged in successfully
+            displayUserInfo(); // Display user information
+        });
+
+        // Check if user is logged in on page load
+        window.onload = function() {
+            if (isLoggedIn()) {
+                displayUserInfo();
+            }
+        };
+
+        // Scroll to top function
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+                document.querySelector('.back-to-top').style.display = "block";
+            } else {
+                document.querySelector('.back-to-top').style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            if (currentScroll > 0) {
+                window.requestAnimationFrame(scrollToTop);
+                window.scrollTo(0, currentScroll - currentScroll / 10); // Adjust this division factor for smoothness
+            }
+        }
+    </script> -->
+</body>
+
+</html>
