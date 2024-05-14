@@ -51,9 +51,6 @@ function displayStore(store) {
     storeSection.appendChild(storeElement);
 }
 
-// Fetch stores when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', fetchStores);
-
 // Function to fetch product data
 async function fetchProducts() {
     const productsRef = collection(db, 'Products');
@@ -125,8 +122,6 @@ function displayProduct(product, productId) {
         }
     });
 }
-// Fetch products when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', fetchProducts);
 
 // Function to filter stores based on search input
 function filterStores(searchTerm) {
@@ -154,41 +149,23 @@ function filterProductsByCategory(searchTerm) {
     });
 }
 
-// Search store input field
-const storeSearchInput = document.getElementById('store-search-input');
-storeSearchInput.addEventListener('input', function (event) {
-    const searchTerm = event.target.value;
-    filterStores(searchTerm);
-});
-
-// Search category input field
-const categorySearchInput = document.getElementById('category-search-input');
-categorySearchInput.addEventListener('input', function (event) {
-    const searchTerm = event.target.value;
-    filterProductsByCategory(searchTerm);
-});
-
-// Get the "Continue Shopping" button element
-const continueShoppingButton = document.getElementById('home');
-
-// Add click event listener to the button
-continueShoppingButton.addEventListener('click', function () {
-    // Redirect to the store home page
-    window.location.href = '../pages/store_home_page.html';
-});
-
-// Get the "Continue Shopping" button element
-const browseButton = document.getElementById('browse');
-
-// Add click event listener to the button
-browseButton.addEventListener('click', function () {
-    alert('You are already here!');
-});// Insert header and footer
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
+    // Insert header and footer
     fetch('header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
+
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            });
         });
 
     fetch('footer.html')
@@ -196,4 +173,35 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             document.getElementById('footer').innerHTML = data;
         });
+
+    // Fetch stores and products when the DOM content is loaded
+    fetchStores();
+    fetchProducts();
+
+    // Search store input field
+    const storeSearchInput = document.getElementById('store-search-input');
+    storeSearchInput.addEventListener('input', function (event) {
+        const searchTerm = event.target.value;
+        filterStores(searchTerm);
+    });
+
+    // Search category input field
+    const categorySearchInput = document.getElementById('category-search-input');
+    categorySearchInput.addEventListener('input', function (event) {
+        const searchTerm = event.target.value;
+        filterProductsByCategory(searchTerm);
+    });
+
+    // Get the "Continue Shopping" button element
+    const continueShoppingButton = document.getElementById('home');
+    continueShoppingButton.addEventListener('click', function () {
+        // Redirect to the store home page
+        window.location.href = '../pages/store_home_page.html';
+    });
+
+    // Get the "Browse" button element
+    const browseButton = document.getElementById('browse');
+    browseButton.addEventListener('click', function () {
+        alert('You are already here!');
+    });
 });

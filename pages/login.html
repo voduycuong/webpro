@@ -10,18 +10,8 @@
 </head>
 
 <body>
-    <header>
-        <img src="/img/mall_logo.png" alt="Mall Logo">
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Fees</a>
-            <a href="#">My Account</a>
-            <a href="#">Browse</a>
-            <a href="#">FAQs</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+    <!-- Add header -->
+    <div id="header"></div>
 
     <div id="loginForm">
         <form id="login">
@@ -98,8 +88,36 @@
             document.getElementById("registerForm").style.display = "none";
             document.getElementById("loginForm").style.display = "block";
         });
+
+        // Insert header and footer
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+
+                    const hamburger = document.getElementById('hamburger-menu');
+                    const navLinks = document.getElementById('nav-links');
+
+                    hamburger.addEventListener('click', () => {
+                        if (navLinks.style.display === 'flex') {
+                            navLinks.style.display = 'none';
+                        } else {
+                            navLinks.style.display = 'flex';
+                        }
+                    });
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                });
+        });
     </script>
 
+    <!-- Add footer -->
+    <div id="footer"></div>
 </body>
 
 </html>

@@ -27,47 +27,6 @@ async function fetchProducts() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger-menu');
-    const navLinks = document.getElementById('nav-links');
-
-    hamburger.addEventListener('click', () => {
-        if (navLinks.style.display === 'flex') {
-            navLinks.style.display = 'none';
-        } else {
-            navLinks.style.display = 'flex';
-        }
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const viewMoreBtn = document.getElementById('view-more-btn');
-    const products = document.querySelectorAll('.product');
-    const productsToShow = 20; // Number of products to show initially
-    let visibleProducts = productsToShow;
-
-    // Initially hide all products beyond the limit
-    products.forEach((product, index) => {
-        if (index >= productsToShow) {
-            product.style.display = 'none';
-        }
-    });
-
-    // Event listener for the "View More" button
-    viewMoreBtn.addEventListener('click', () => {
-        // Show the next batch of products
-        for (let i = visibleProducts; i < visibleProducts + productsToShow && i < products.length; i++) {
-            products[i].style.display = 'block';
-        }
-        visibleProducts += productsToShow;
-
-        // Hide the "View More" button if all products are visible
-        if (visibleProducts >= products.length) {
-            viewMoreBtn.style.display = 'none';
-        }
-    });
-});
-
 // Function to display product on the page
 function displayProduct(product, productId) {
     // Create product element
@@ -125,8 +84,6 @@ function displayProduct(product, productId) {
     const newProductsSection = document.getElementById('new-products');
     newProductsSection.appendChild(productElement);
 }
-// Fetch products when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', fetchProducts);
 
 // Function to fetch store data
 async function fetchStores() {
@@ -162,29 +119,70 @@ function displayStore(store) {
     storeSection.appendChild(storeElement);
 }
 
-// Fetch stores when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', fetchStores);
-
-// Get the "Continue Shopping" button element
-const continueShoppingButton = document.getElementById('browse');
-
-// Add click event listener to the button
-continueShoppingButton.addEventListener('click', function () {
-    // Redirect to the store home page
-    window.location.href = '../pages/browse.html';
-});
-
 // Insert header and footer
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('../pages/header.html')
+    fetch('header.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
+
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            });
         });
 
-    fetch('pages/footer.html')
+
+    fetch('footer.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;
         });
+
+    // Fetch products when the DOM content is loaded
+    fetchProducts();
+
+    // Fetch stores when the DOM content is loaded
+    fetchStores();
+
+    // Get the "Continue Shopping" button element
+    const continueShoppingButton = document.getElementById('browse');
+
+    // Add click event listener to the button
+    continueShoppingButton.addEventListener('click', function () {
+        // Redirect to the store home page
+        window.location.href = '../pages/browse.html';
+    });
+
+    const viewMoreBtn = document.getElementById('view-more-btn');
+    const products = document.querySelectorAll('.product');
+    const productsToShow = 20; // Number of products to show initially
+    let visibleProducts = productsToShow;
+
+    // Initially hide all products beyond the limit
+    products.forEach((product, index) => {
+        if (index >= productsToShow) {
+            product.style.display = 'none';
+        }
+    });
+
+    // Event listener for the "View More" button
+    viewMoreBtn.addEventListener('click', () => {
+        // Show the next batch of products
+        for (let i = visibleProducts; i < visibleProducts + productsToShow && i < products.length; i++) {
+            products[i].style.display = 'block';
+        }
+        visibleProducts += productsToShow;
+
+        // Hide the "View More" button if all products are visible
+        if (visibleProducts >= products.length) {
+            viewMoreBtn.style.display = 'none';
+        }
+    });
 });
