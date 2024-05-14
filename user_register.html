@@ -1,119 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Register</title>
-    <link rel="stylesheet" href="/css/user_register.css">
-    <script src="/scripts/user_register.js"></script>
+    <link rel="stylesheet" href="user_register.css">
+    <script type="module" src="user_register.js"></script>
 </head>
 
 <body>
-    <h2>Registration Form</h2>
-    <form action="#" method="post" enctype="multipart/form-data">
-        <div class="form-columns">
-            <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone number:</label>
-                <input type="text" id="phone" name="phone" required>
-            </div>
+    <header>
+        <div class="logo">
+            <img src="../img/loreal.jpg" alt="Mall Logo">
         </div>
-
-        <div class="form-columns">
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <div class="form-group">
-
-                <label for="confirmPassword">Retype password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-            </div>
+        <div class="web-name" id="web-name">
+            <p>BLUE-GAME</p>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Fees</a></li>
+                <li><a href="#">My Account</a></li>
+                <li id="browse"><a href="#">Browse</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="registration-section">
+            <h2>Registration Form</h2>
+            <form id="registration-form" onsubmit="registerWithEmailAndPassword(event)" method="post" enctype="multipart/form-data">
+                <div class="form-columns">
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-        <label for="profilePicture">Profile picture:</label>
-        <input type="file" id="profilePicture" name="profilePicture" accept="image/*" required>
+                    <div class="form-group">
+                        <label for="phone">Phone number:</label>
+                        <input type="text" id="phone" name="phone" required>
+                    </div>
+                </div>
 
-        <div class="form-columns">
-            <div class="form-group">
-                <label for="firstName">First name:</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
+                <div class="form-columns">
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
 
-            <div class="form-group">
-                <label for="lastName">Last name:</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
-        </div>
-
-        <div class="form-columns">
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
-            </div>
-
-        </div>
-
-        <div class="form-columns">
-            <div class="form-group">
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" required>
-            </div>
-
-            <div class="form-group">
-                <label for="zipcode">Zipcode:</label>
-                <input type="text" id="zipcode" name="zipcode" pattern="[0-9]{4,6}" required>
-            </div>
-
-        </div>
-        <div class="form-group">
-            <label for="country">Country:</label>
-            <input type="text" id="city" name="city" required>
-        </div>
-
-        <label>Account type:</label>
-        <input type="radio" id="shopper" name="accountType" value="shopper" checked>
-        <label for="shopper" class="account_label">Shopper</label>
-        <input type="radio" id="storeOwner" name="accountType" value="storeOwner">
-        <label for="storeOwner" class="account_label">Store owner</label>
-
-        <div id="storeFields">
-            <div class="form-columns">
-                <div class="form-group">
-                    <label for="businessName">Business name:</label>
-                    <input type="text" id="businessName" name="businessName">
+                    <div class="form-group">
+                        <label for="confirmPassword">Retype password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="storeName">Store name:</label>
-                    <input type="text" id="storeName" name="storeName">
+                    <label for="profilePicture">Profile picture:</label>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
                 </div>
-            </div>
 
-            <label for="storeCategory">Store category:</label>
-            <select id="storeCategory" name="storeCategory">
-                <option value="1">Clothing Store</option>
-                <option value="2">Electronics Store</option>
-                <option value="3">Fashion and Apparel Stores</option>
-                <option value="4">Electronics Stores</option>
-                <option value="5">Home and Furniture Stores</option>
-                <option value="6">Beauty and Cosmetics Stores</option>
-                <option value="7">Sports and Fitness Stores</option>
-                <option value="8">Toys and Games Stores</option>
-                <option value="9">Food and Grocery Stores
-                <option value="10">Jewelry and Accessories Stores</option>
-                <option value="11">Health and Wellness Stores</option>
-                <option value="12">Books and Stationery Stores</option>
-            </select>
-        </div>
+                <div class="form-columns">
+                    <div class="form-group">
+                        <label for="firstName">First name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
 
-        <br>
-        <button onclick="register()">Register</button>
-    </form>
+                    <div class="form-group">
+                        <label for="lastName">Last name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="form-columns">
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipcode">Zipcode:</label>
+                        <input type="text" id="zipcode" name="zipcode" pattern="[0-9]{4,6}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
+
+                <label>Account type:</label>
+                <div class="form-group radio-group">
+                    <input type="radio" id="shopper" name="accountType" value="shopper" checked>
+                    <label for="shopper" class="account_label">Shopper</label>
+                    <input type="radio" id="storeOwner" name="accountType" value="storeOwner">
+                    <label for="storeOwner" class="account_label">Store Owner</label>
+                </div>
+
+                <div id="storeFields">
+                        <div class="form-group">
+                            <label for="storeName">Store name:</label>
+                            <input type="text" id="storeName" name="storeName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="storeImage">Store picture:</label>
+                            <input type="file" id="storeImage" name="storeImage" accept="image/*">
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#">Copyright</a></li>
+                <li><a href="#">ToS</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
+
 </html>
