@@ -16,6 +16,13 @@
         <div class="web-name">
             <p>BLUE-GAME</p>
         </div>
+    </div>
+        <div class="hamburger" id="hamburger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-links" id="nav-links">
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -27,22 +34,25 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
+    </div>
     </header>
     
     <main>
+        <h2>New Stores</h2>
         <section class="new-stores">
-            <h2>New Stores</h2>
-           
+            
         </section>
 
+        <h2>New Products</h2>
         <section id="new-products" class="new-products">
-            
-            <h2>New Products</h2>
-            
+            <div class="product-section">
+            <!-- Only the first 20 products are visible initially -->
+             </div>
+    <button id="view-more-btn">View More</button>
         </section>
 
+        <h2>Featured Stores</h2>
         <section class="featured-stores">
-            <h2>Featured Stores</h2>
             <div class="store">
                 <img src="" alt="Store 4 Logo">
                 <p>Store 4</p>
@@ -57,8 +67,8 @@
             </div>
         </section>
 
-        <section id="featured-products" class="featured-products">
-            <h2>Featured Products</h2>
+        <h2>Featured Products</h2>
+        <section id="featured-products" class="featured-products">    
             
         </section>
     </main>
@@ -73,7 +83,7 @@
         </nav>
     </footer>
     <script type="module" src="../scripts/store_home_page.js"></script>
-    
+    <script src="../scripts/dropdown.js"></script>
 </body>
 
 </html>
