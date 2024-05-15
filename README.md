@@ -22,4 +22,4 @@ TBA
 | 4    | Duong Tran Le Truong   | S3807528   | `x`
 | 5    | Le Thanh Vinh          | S3914997   | `x`
 
-#### Submission day: May 22nd
+#### Submission day: May 22nd, 2024
