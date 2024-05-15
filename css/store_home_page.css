@@ -70,6 +70,7 @@ h2 {
 .web-name {
     flex-grow: 1; 
     text-align: center;
+    margin: 0 auto;
 }
 
 .web-name p {
@@ -110,15 +111,47 @@ footer nav ul li:last-child {
     text-align: center;
 }
 
-/* Add your CSS styles for product sections and items here */
 .product-section {
-    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 
 .product {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+#view-more-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #1E0342;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#view-more-btn:hover {
+    background-color: #2b0d53;
+}
+
+#show-less-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #1E0342;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#show-less-btn:hover {
+    background-color: #2b0d53;
 }
 
 .product img {
