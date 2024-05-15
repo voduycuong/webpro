@@ -115,3 +115,20 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+/* Add this CSS to your stylesheet */
+
+#button-container {
+    width: 100%;
+    margin-top: 20px;
+    /* Adjust the margin as needed */
+}
+
+#button-container button {
+    margin: 0 10px;
+    /* Adjust the space between buttons */
+    padding: 10px 20px;
+    /* Adjust button padding for better appearance */
+    font-size: 16px;
+    /* Adjust font size */
+}
