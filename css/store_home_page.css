@@ -54,18 +54,6 @@ h2 {
     margin: 0;
 }
 
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger div {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    margin: 5px 0;
-}
 
 footer {
     background-color: #1E0342;

@@ -18,18 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger-menu');
-  const navLinks = document.getElementById('nav-links');
-
-  hamburger.addEventListener('click', () => {
-    if (navLinks.style.display === 'flex') {
-      navLinks.style.display = 'none';
-    } else {
-      navLinks.style.display = 'flex';
-    }
-  });
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   const viewMoreBtn = document.getElementById('view-more-btn');
@@ -134,33 +122,41 @@ async function fetchStores() {
   const storesRef = collection(db, 'Stores');
   const storesSnapshot = await getDocs(storesRef);
   storesSnapshot.forEach(doc => {
-    const data = doc.data();
-    displayStore(data); // Pass along the store data
+      const data = doc.data();
+      displayStore(data); // Pass along the store data
   });
 }
 
+
 // Function to display store on the page
-function displayStore(store) {
-    // Create store element
-    const storeElement = document.createElement('div');
-    storeElement.classList.add('store');
+function displayStore(store, storeId) {
+  const storeElement = document.createElement('div');
+  storeElement.classList.add('store');
 
-    // Create image element
-    const imageElement = document.createElement('img');
-    imageElement.src = store.image;
-    imageElement.alt = store.name + ' Logo';
+  const storeLink = document.createElement('a');
+  storeLink.href = `store_profile.html?id=${storeId}`;
+  storeLink.style.textDecoration = 'none';
 
-    // Create name element
-    const nameElement = document.createElement('p');
-    nameElement.textContent = store.name;
+  const imageElement = document.createElement('img');
+  imageElement.src = store.image;
+  imageElement.alt = store.name + ' Image';
 
-    // Append elements to store container
-    storeElement.appendChild(imageElement);
-    storeElement.appendChild(nameElement);
+  storeLink.appendChild(imageElement);
+  storeElement.appendChild(storeLink);
 
-    // Append store to the "Store Section"
-    const storeSection = document.querySelector('.new-stores');
-    storeSection.appendChild(storeElement);
+  const storesContainer = document.createElement('div');
+  storesContainer.classList.add('store-profiles');
+
+  const nameElement = document.createElement('p');
+  nameElement.classList.add('store-name');
+  nameElement.textContent = store.name;
+  nameElement.style.fontWeight = 'bold';
+
+  storesContainer.appendChild(nameElement);
+  storeElement.appendChild(storesContainer);
+
+  const newStoresSection = document.getElementById('new-stores');
+  newStoresSection.appendChild(storeElement);
 }
 
 // Insert header and footer
@@ -181,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         });
-
+      });
 
     fetch('footer.html')
         .then(response => response.text())
