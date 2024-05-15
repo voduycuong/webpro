@@ -5,6 +5,7 @@ function showModal(memberName, memberInfo) {
 
     memberNameElement.textContent = memberName;
     memberInfoElement.textContent = memberInfo;
+    memberInfoElement.innerHTML = memberInfo.replace(/\n/g, '<br>'); // Replace new lines with <br> tags for multiline support
 
     modal.style.display = 'block';
     document.body.classList.add('dimmed');
