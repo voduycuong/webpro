@@ -1,0 +1,10 @@
+#userProfile {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#profilePicture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
