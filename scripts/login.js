@@ -39,27 +39,27 @@ document.getElementById("login").addEventListener("submit", function (event) {
         });
 });
 
-document.getElementById("forgotPasswordLink").addEventListener("click", function(event) {
+document.getElementById("forgotPasswordLink").addEventListener("click", function (event) {
     event.preventDefault();
     document.getElementById("loginForm").style.display = "none"; // Hide login form
     document.getElementById("resetPasswordForm").style.display = "block"; // Show reset password form
 });
 
-document.getElementById("backToLogin").addEventListener("click", function(event) {
+document.getElementById("backToLogin").addEventListener("click", function (event) {
     event.preventDefault();
     document.getElementById("resetPasswordForm").style.display = "none"; // Hide reset password form
     document.getElementById("loginForm").style.display = "block"; // Show login form
 });
 
 // Forgot password reset
-document.getElementById("resetPassword").addEventListener("submit", function(event) {
+document.getElementById("resetPassword").addEventListener("submit", function (event) {
     event.preventDefault();
     const email = document.getElementById("resetEmail").value;
     if (email) { // Check if email is not null
-        sendPasswordResetEmail(auth, email).then(function() {
+        sendPasswordResetEmail(auth, email).then(function () {
             // Email sent.
             alert("Password reset email sent. Please check your email.");
-        }).catch(function(error) {
+        }).catch(function (error) {
             // An error happened.
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -69,5 +69,28 @@ document.getElementById("resetPassword").addEventListener("submit", function(eve
     }
 });
 
+// Insert header and footer
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
 
-    
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            });
+        });
+
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+});

@@ -2,7 +2,7 @@
 const continueShoppingButton = document.getElementById('continue-shopping');
 
 // Add click event listener to the button
-continueShoppingButton.addEventListener('click', function() {
+continueShoppingButton.addEventListener('click', function () {
     // Redirect to the store home page
     window.location.href = '../pages/store_home_page.html';
 });
@@ -11,7 +11,7 @@ continueShoppingButton.addEventListener('click', function() {
 const orderButton = document.getElementById('place-order');
 
 // Add click event listener to the button
-orderButton.addEventListener('click', function() {
+orderButton.addEventListener('click', function () {
     // Redirect to the payment page
     window.location.href = '../pages/payment_in_cart.html';
 });
@@ -51,7 +51,7 @@ function displayOrderData() {
 
     // Find the container element to display the order data
     const cartSummary = document.getElementById('cart-summary');
-    
+
     // Clear any existing cart items
     cartSummary.innerHTML = '';
 

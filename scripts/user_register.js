@@ -92,20 +92,20 @@ async function registerWithEmailAndPassword(event) {
 
         // If the user is a store owner, add store data to the "Stores" collection
         if (accountType === 'storeOwner') {
-        const storeData = {
-        name: storeName,
-        image: '' // Placeholder for store image URL
-        };
+            const storeData = {
+                name: storeName,
+                image: '' // Placeholder for store image URL
+            };
             // Upload store image if provided
-    if (storeImage) {
-        const storeImageRef = ref(storage, `store_images/${user.uid}/${storeImage.name}`);
-        await uploadBytes(storeImageRef, storeImage);
-        const storeImageUrl = await getDownloadURL(storeImageRef);
-        storeData.image = storeImageUrl; // Set the store image URL
-    }
+            if (storeImage) {
+                const storeImageRef = ref(storage, `store_images/${user.uid}/${storeImage.name}`);
+                await uploadBytes(storeImageRef, storeImage);
+                const storeImageUrl = await getDownloadURL(storeImageRef);
+                storeData.image = storeImageUrl; // Set the store image URL
+            }
 
-    // Add store data to the "Stores" collection
-    await addDoc(collection(db, 'Stores'), storeData);
+            // Add store data to the "Stores" collection
+            await addDoc(collection(db, 'Stores'), storeData);
         }
 
     } catch (error) {
@@ -116,12 +116,38 @@ async function registerWithEmailAndPassword(event) {
 
 
 document.querySelector('form').addEventListener('submit', registerWithEmailAndPassword);
-document.querySelectorAll('input[name="accountType"]').forEach(function(radio) {
-    radio.addEventListener('change', function() {
+document.querySelectorAll('input[name="accountType"]').forEach(function (radio) {
+    radio.addEventListener('change', function () {
         if (this.value === 'storeOwner') {
             document.getElementById('storeFields').style.display = 'block';
         } else {
             document.getElementById('storeFields').style.display = 'none';
         }
     });
+});
+
+// Insert header and footer
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            });
+        });
+
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
 });

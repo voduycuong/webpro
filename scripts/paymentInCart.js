@@ -5,18 +5,18 @@ function getOrderData() {
     return data ? JSON.parse(data) : [];
 }
 
-    // Show ATM info form when ATM method is selected
-    document.getElementById('atm-method').addEventListener('change', function() {
-        document.getElementById('atm-info').classList.remove('hidden');
-    });
+// Show ATM info form when ATM method is selected
+document.getElementById('atm-method').addEventListener('change', function () {
+    document.getElementById('atm-info').classList.remove('hidden');
+});
 
-    // Hide ATM info form when Cash method is selected
-    document.getElementById('cash-method').addEventListener('change', function() {
-        document.getElementById('atm-info').classList.add('hidden');
-    });
-        // Handle form submission
+// Hide ATM info form when Cash method is selected
+document.getElementById('cash-method').addEventListener('change', function () {
+    document.getElementById('atm-info').classList.add('hidden');
+});
+// Handle form submission
 const confirmPaymentButton = document.getElementById('confirm-payment');
-confirmPaymentButton.addEventListener('click', function() {
+confirmPaymentButton.addEventListener('click', function () {
     // Check if ATM method is selected
     const atmMethod = document.getElementById('atm-method');
     if (atmMethod.checked) {
@@ -29,13 +29,13 @@ confirmPaymentButton.addEventListener('click', function() {
             return; // Stop form submission
         }
     }
-    
+
     // If all required fields are filled, proceed with payment confirmation
     alert('Payment confirmed!');
     window.location.href = '../pages/store_home_page.html';
 });
 
-    
+
 
 // Function to display order data on the Payment page
 function displayPaymentData() {
@@ -44,7 +44,7 @@ function displayPaymentData() {
 
     // Find the container element to display the product details
     const paymentDetails = document.getElementById('payment-details');
-    
+
     // Clear any existing payment details
     paymentDetails.innerHTML = '';
 

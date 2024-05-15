@@ -11,7 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "811572790555",
     appId: "1:811572790555:web:efb6caa094651088e27fbe",
     measurementId: "G-E002PST6WK"
-  };
+};
 
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
@@ -36,7 +36,7 @@ async function getStoreProfileData(storeId) {
 // Function to update product details on the page
 function updateStoreProfile(data) {
     document.getElementById("store-name").textContent = data.name;
- 
+
     // Update product image and thumbnails (assuming you have the image URLs in the 'images' array)
     document.getElementById("store-image").src = data.image; // Set main product image
 
@@ -52,7 +52,7 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Get product ID from URL parameter
     const storeId = getParameterByName('id');
 
@@ -135,3 +135,4 @@ function displayProduct(product, productId) {
 
 // Fetch products when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', fetchProducts);
+
