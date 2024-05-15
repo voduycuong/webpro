@@ -8,6 +8,9 @@
 
 </head>
 <body>
+    <!-- Add header -->
+    <div id="header"></div>
+
     <h1>TERMS & CONDITIONS</h1>
 
     <p><strong>Acceptance of Terms</strong></p>
@@ -64,5 +67,36 @@
     <p><strong>Severability</strong></p>
     <p>If any provision of these Terms is held to be invalid or unenforceable, such provision shall be modified to the
         minimum extent necessary to make it enforceable.</p>
+
+    <!-- Add footer -->
+    <div id="footer"></div>
+
+    <script>
+        // Insert header and footer
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+
+                    const hamburger = document.getElementById('hamburger-menu');
+                    const navLinks = document.getElementById('nav-links');
+
+                    hamburger.addEventListener('click', () => {
+                        if (navLinks.style.display === 'flex') {
+                            navLinks.style.display = 'none';
+                        } else {
+                            navLinks.style.display = 'flex';
+                        }
+                    });
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                });
+        });
+    </script>
 </body>
 </html>

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="/css/faq.css">
 </head>
 <body>
+    <!-- Add header -->
+    <div id="header"></div>
+
     <h1> Frequently Asked Questions </h1>
 
     <h2>WHAT ARE MY SHIPPING OPTIONS?</h2>
@@ -48,5 +51,36 @@
 
     <p>Items indicated as “Final Sale” at the time of purchase are not eligible for return, exchange or merchandise
         credit.</p>
+
+    <!-- Add footer -->
+    <div id="footer"></div>
+
+    <script>
+        // Insert header and footer
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+
+                    const hamburger = document.getElementById('hamburger-menu');
+                    const navLinks = document.getElementById('nav-links');
+
+                    hamburger.addEventListener('click', () => {
+                        if (navLinks.style.display === 'flex') {
+                            navLinks.style.display = 'none';
+                        } else {
+                            navLinks.style.display = 'flex';
+                        }
+                    });
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer').innerHTML = data;
+                });
+        });
+    </script>
 </body>
 </html>

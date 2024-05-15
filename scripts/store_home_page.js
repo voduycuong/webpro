@@ -4,14 +4,14 @@ import { getFirestore, collection, getDocs } from "https://www.gstatic.com/fireb
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC1lU93LyUOig7V-j1bmQuK3J3EGG7lzP0",
-  authDomain: "bluegame-28f86.firebaseapp.com",
-  databaseURL: "https://bluegame-28f86-default-rtdb.firebaseio.com",
-  projectId: "bluegame-28f86",
-  storageBucket: "bluegame-28f86.appspot.com",
-  messagingSenderId: "811572790555",
-  appId: "1:811572790555:web:efb6caa094651088e27fbe",
-  measurementId: "G-E002PST6WK"
+    apiKey: "AIzaSyC1lU93LyUOig7V-j1bmQuK3J3EGG7lzP0",
+    authDomain: "bluegame-28f86.firebaseapp.com",
+    databaseURL: "https://bluegame-28f86-default-rtdb.firebaseio.com",
+    projectId: "bluegame-28f86",
+    storageBucket: "bluegame-28f86.appspot.com",
+    messagingSenderId: "811572790555",
+    appId: "1:811572790555:web:efb6caa094651088e27fbe",
+    measurementId: "G-E002PST6WK"
 };
 
 // Initialize Firebase app
@@ -141,33 +141,62 @@ async function fetchStores() {
 
 // Function to display store on the page
 function displayStore(store) {
-  // Create store element
-  const storeElement = document.createElement('div');
-  storeElement.classList.add('store');
+    // Create store element
+    const storeElement = document.createElement('div');
+    storeElement.classList.add('store');
 
-  // Create image element
-  const imageElement = document.createElement('img');
-  imageElement.src = store.image;
-  imageElement.alt = store.name + ' Logo';
+    // Create image element
+    const imageElement = document.createElement('img');
+    imageElement.src = store.image;
+    imageElement.alt = store.name + ' Logo';
 
-  // Create name element
-  const nameElement = document.createElement('p');
-  nameElement.textContent = store.name;
+    // Create name element
+    const nameElement = document.createElement('p');
+    nameElement.textContent = store.name;
 
-  // Append elements to store container
-  storeElement.appendChild(imageElement);
-  storeElement.appendChild(nameElement);
+    // Append elements to store container
+    storeElement.appendChild(imageElement);
+    storeElement.appendChild(nameElement);
 
-  // Append store to the "Store Section"
-  const storeSection = document.querySelector('.new-stores');
-  storeSection.appendChild(storeElement);
+    // Append store to the "Store Section"
+    const storeSection = document.querySelector('.new-stores');
+    storeSection.appendChild(storeElement);
 }
 
-// Fetch stores when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', fetchStores);
+// Insert header and footer
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
 
-// Get the "Continue Shopping" button element
-const continueShoppingButton = document.getElementById('browse');
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            });
+        });
+
+
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
+
+    // Fetch products when the DOM content is loaded
+    fetchProducts();
+
+    // Fetch stores when the DOM content is loaded
+    fetchStores();
+
+    // Get the "Continue Shopping" button element
+    const continueShoppingButton = document.getElementById('browse');
 
 // Add click event listener to the button
 continueShoppingButton.addEventListener('click', function() {

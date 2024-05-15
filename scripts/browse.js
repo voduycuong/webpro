@@ -11,7 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "811572790555",
     appId: "1:811572790555:web:efb6caa094651088e27fbe",
     measurementId: "G-E002PST6WK"
-  };
+};
 
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
@@ -63,9 +63,6 @@ function displayStore(store) {
     const storeSection = document.querySelector('.store-section');
     storeSection.appendChild(storeElement);
 }
-
-// Fetch stores when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', fetchStores);
 
 // Function to fetch product data
 async function fetchProducts() {
@@ -138,8 +135,6 @@ function displayProduct(product, productId) {
         }
     });
 }
-// Fetch products when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', fetchProducts);
 
 // Function to filter stores based on search input
 function filterStores(searchTerm) {
@@ -167,33 +162,59 @@ function filterProductsByCategory(searchTerm) {
     });
 }
 
-// Search store input field
-const storeSearchInput = document.getElementById('store-search-input');
-storeSearchInput.addEventListener('input', function(event) {
-    const searchTerm = event.target.value;
-    filterStores(searchTerm);
-});
+document.addEventListener('DOMContentLoaded', function () {
+    // Insert header and footer
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
 
-// Search category input field
-const categorySearchInput = document.getElementById('category-search-input');
-categorySearchInput.addEventListener('input', function(event) {
-    const searchTerm = event.target.value;
-    filterProductsByCategory(searchTerm);
-});
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
 
-// Get the "Continue Shopping" button element
-const continueShoppingButton = document.getElementById('home');
+            hamburger.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                }
+            });
+        });
 
-// Add click event listener to the button
-continueShoppingButton.addEventListener('click', function() {
-    // Redirect to the store home page
-    window.location.href = '../pages/store_home_page.html';
-});
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer').innerHTML = data;
+        });
 
-// Get the "Continue Shopping" button element
-const browseButton = document.getElementById('browse');
+    // Fetch stores and products when the DOM content is loaded
+    fetchStores();
+    fetchProducts();
 
-// Add click event listener to the button
-browseButton.addEventListener('click', function() {
-    alert('You are already here!');
+    // Search store input field
+    const storeSearchInput = document.getElementById('store-search-input');
+    storeSearchInput.addEventListener('input', function (event) {
+        const searchTerm = event.target.value;
+        filterStores(searchTerm);
+    });
+
+    // Search category input field
+    const categorySearchInput = document.getElementById('category-search-input');
+    categorySearchInput.addEventListener('input', function (event) {
+        const searchTerm = event.target.value;
+        filterProductsByCategory(searchTerm);
+    });
+
+    // Get the "Continue Shopping" button element
+    const continueShoppingButton = document.getElementById('home');
+    continueShoppingButton.addEventListener('click', function () {
+        // Redirect to the store home page
+        window.location.href = '../pages/store_home_page.html';
+    });
+
+    // Get the "Browse" button element
+    const browseButton = document.getElementById('browse');
+    browseButton.addEventListener('click', function () {
+        alert('You are already here!');
+    });
 });
