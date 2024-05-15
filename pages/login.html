@@ -4,26 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script type="module" src="/scripts/login.js"></script>
     <title>Login</title>
 
 </head>
 
 <body>
-    <!-- Add header -->
-    <div id="header"></div>
+    <header>
+        <img src="/img/mall_logo.png" alt="Mall Logo">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Fees</a>
+            <a href="#">My Account</a>
+            <a href="#">Browse</a>
+            <a href="#">FAQs</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
     <div id="loginForm">
         <form id="login">
             <h2>Login</h2>
-            <input type="text" id="loginUsername" placeholder="Username" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
-            <input type="submit" value="Login">
+            <input type="text" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="/pages/user_register.html">Register here</a></p>
+            <p><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
         </form>
-        <p>Don't have an account? <a href="../pages/user_register.html" id="registerLink">Register here</a></p>
     </div>
 
-    <div id="registerForm" style="display: none;">
+    <!-- Initially hidden reset password form -->
+    <div id="resetPasswordForm" style="display: none;">
+        <form id="resetPassword">
+            <h2>Reset Password</h2>
+            <input type="text" id="resetEmail" placeholder="Email" required>
+            <button type="submit">Send Reset Email</button>
+            <p><a href="#" id="backToLogin">Back to Login</a></p>
+        </form>
+    </div>
+
+    <!-- <div id="registerForm" style="display: none;">
         <form id="register">
             <h2>Register</h2>
             <input type="text" id="registerUsername" placeholder="Username" required>
@@ -32,9 +54,9 @@
             <input type="submit" value="Register">
         </form>
         <p>Already have an account? <a href="#" id="loginLink">Login here</a></p>
-    </div>
+    </div> -->
 
-    <script>
+    <!-- <script>
         document.getElementById("login").addEventListener("submit", function (event) {
             event.preventDefault();
             var username = document.getElementById("loginUsername").value;
@@ -88,36 +110,8 @@
             document.getElementById("registerForm").style.display = "none";
             document.getElementById("loginForm").style.display = "block";
         });
+    </script> -->
 
-        // Insert header and footer
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch('header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header').innerHTML = data;
-
-                    const hamburger = document.getElementById('hamburger-menu');
-                    const navLinks = document.getElementById('nav-links');
-
-                    hamburger.addEventListener('click', () => {
-                        if (navLinks.style.display === 'flex') {
-                            navLinks.style.display = 'none';
-                        } else {
-                            navLinks.style.display = 'flex';
-                        }
-                    });
-                });
-
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer').innerHTML = data;
-                });
-        });
-    </script>
-
-    <!-- Add footer -->
-    <div id="footer"></div>
 </body>
 
 </html>

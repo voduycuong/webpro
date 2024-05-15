@@ -34,24 +34,24 @@ function displayStore(store, storeId) {
     storeElement.classList.add('store');
 
     // Create anchor element for linking to product detail page
-  const storeLink = document.createElement('a');
-  storeLink.href = `store_profile.html?id=${storeId}`; // Pass along the document ID as a URL parameter
-  storeLink.style.textDecoration = 'none'; // Remove default underline style
+    const storeLink = document.createElement('a');
+    storeLink.href = `store_profile.html?id=${storeId}`; // Pass along the document ID as a URL parameter
+    storeLink.style.textDecoration = 'none'; // Remove default underline style
 
     // Create image element
     const imageElement = document.createElement('img');
     imageElement.src = store.image;
     imageElement.alt = store.name + ' Image';
 
-      // Append image element to the product link
-  storeLink.appendChild(imageElement);
+    // Append image element to the product link
+    storeLink.appendChild(imageElement);
 
-  // Append product link to product container
-  storeElement.appendChild(storeLink);
+    // Append product link to product container
+    storeElement.appendChild(storeLink);
 
-  // Create and append other product details
-  const storesContainer = document.createElement('div');
-  storesContainer.classList.add('store-profiles');
+    // Create and append other product details
+    const storesContainer = document.createElement('div');
+    storesContainer.classList.add('store-profiles');
 
     // Create name element
     const nameElement = document.createElement('p');
@@ -59,12 +59,12 @@ function displayStore(store, storeId) {
     nameElement.textContent = store.name;
     nameElement.style.fontWeight = 'bold'
 
-      // Append details to the details container
-  storesContainer.appendChild(nameElement);
+    // Append details to the details container
+    storesContainer.appendChild(nameElement);
 
 
-  // Append details container to product container
- storeElement.appendChild(storesContainer);
+    // Append details container to product container
+    storeElement.appendChild(storesContainer);
 
 
     // Append store to the "Store Section"

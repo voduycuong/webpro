@@ -10,6 +10,20 @@ a {
     color: inherit;
 }
 
+/* Header styling */
+header {
+    background-color: #2874F0; /* Lazada blue */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    height: 50px;
+}
+
 nav a {
     margin: 0 10px;
     color: #fff;
@@ -26,72 +40,67 @@ main {
 
 /* Section styling */
 section {
-    margin-bottom: 20px;
-    /* Space between sections */
-    border: 1px solid #e0e0e0;
-    /* Light gray border */
-    border-radius: 5px;
-    /* Rounded corners */
+    margin-bottom: 20px; /* Space between sections */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
     padding: 15px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Light box shadow */
-    display: flex;
-    /* Display each section as a flex container */
-    flex-wrap: wrap;
-    /* Allow items to wrap to the next line if needed */
-    gap: 20px;
-    /* Space between items in the section */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light box shadow */
+    display: flex; /* Display each section as a flex container */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    gap: 20px; /* Space between items in the section */
 }
 
 /* Section titles styling */
 section h2 {
-    width: 100%;
-    /* Make the title span the whole section */
+    width: 100%; /* Make the title span the whole section */
     margin-bottom: 10px;
-    color: #2874F0;
-    /* Lazada blue */
+    color: #2874F0; /* Lazada blue */
 }
 
 /* Make each div within a section display side by side */
-section>div {
-    flex: 1;
-    /* Allow each div to grow equally within the section */
+section > div {
+    flex: 1; /* Allow each div to grow equally within the section */
     display: flex;
-    flex-direction: column;
-    /* Stack image and text vertically within each div */
-    align-items: center;
-    /* Center align the content within each div */
-    max-width: 150px;
-    /* Set the maximum width of each div */
-    border-right: 1px solid #e0e0e0;
-    /* Separate divs with a straight line */
-    padding-right: 10px;
-    /* Padding for space inside each div */
+    flex-direction: column; /* Stack image and text vertically within each div */
+    align-items: center; /* Center align the content within each div */
+    max-width: 150px; /* Set the maximum width of each div */
+    border-right: 1px solid #e0e0e0; /* Separate divs with a straight line */
+    padding-right: 10px; /* Padding for space inside each div */
     text-align: center;
 }
 
 /* Remove the right border from the last div in each section */
-section>div:last-child {
+section > div:last-child {
     border-right: none;
 }
 
 /* Styling for each product image */
-section>div img {
-    width: 100%;
-    /* Set the image width to fill the div */
-    height: auto;
-    /* Keep the image aspect ratio */
-    margin-bottom: 5px;
-    /* Space between image and text */
+section > div img {
+    width: 100%; /* Set the image width to fill the div */
+    height: auto; /* Keep the image aspect ratio */
+    margin-bottom: 5px; /* Space between image and text */
 }
 
 /* Footer styling */
 footer {
-    background-color: #f1f1f1;
-    /* Light gray background */
+    background-color: #f1f1f1; /* Light gray background */
     padding: 10px 20px;
     text-align: center;
+}
+
+footer nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer a {
+    color: #2874F0; /* Lazada blue */
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 .back-to-top {
@@ -107,7 +116,7 @@ footer {
     display: none;
 }
 
-/* Form style of login and register */
+/* Form style of login*/
 form {
     max-width: 400px;
     margin: 50px auto;
@@ -117,7 +126,7 @@ form {
     background-color: #f9f9f9;
 }
 
-#loginForm a {
+#loginForm a  {
     color: #2874F0;
 }
 
@@ -125,31 +134,22 @@ form {
     text-decoration: underline;
 }
 
-#registerForm a {
-    color: #2874F0;
-}
-
-#registerForm a:hover {
-    text-decoration: underline;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="submit"] {
+input[type="text"], input[type="password"] {
     width: 100%;
-    margin-bottom: 10px;
     padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
-
-input[type="submit"] {
-    background-color: #4CAF50;
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
     color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
-
-input[type="submit"]:hover {
-    background-color: #45a049;
+button[type="submit"]:hover {
+    background-color: #0056b3;
 }
