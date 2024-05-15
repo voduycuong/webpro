@@ -1,13 +1,14 @@
-
-
-.search-category input, .search-store input {
+.search-category input,
+.search-store input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-.product-section, .store-section {
-    margin-top: 30px; /* Add margin at the top */
+.product-section,
+.store-section {
+    margin-top: 30px;
+    /* Add margin at the top */
 }
 
 .product {

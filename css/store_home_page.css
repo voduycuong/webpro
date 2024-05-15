@@ -4,15 +4,6 @@ body {
     padding: 0;
 }
 
-header {
-    background-color: #1E0342;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 #web-name {
     background: linear-gradient(to left, white, rgb(197, 196, 196), rgb(152, 152, 152), rgb(94, 94, 94), rgb(57, 57, 57));
     background-clip: text;
@@ -72,24 +63,6 @@ h2 {
     border: solid 2px #1E0342;
 }
 
-
-
-footer {
-    background-color: #1E0342;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-footer nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-footer nav ul li:last-child {
-    margin-right: 0;
-}
-
 .store p,
 .product p {
     text-align: center;
@@ -110,7 +83,6 @@ footer nav ul li:last-child {
     width: 100%;
     height: auto;
 }
-
 
 .product:hover {
     transform: translateY(-5px);
