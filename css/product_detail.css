@@ -10,6 +10,11 @@ body {
     padding: 20px;
 }
 
+.cart-button {
+    font-size: 24px;
+    color: white; 
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
