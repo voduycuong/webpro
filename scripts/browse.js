@@ -23,28 +23,49 @@ async function fetchStores() {
     const storesSnapshot = await getDocs(storesRef);
     storesSnapshot.forEach(doc => {
         const data = doc.data();
-        displayStore(data); // Pass along the store data
+        displayStore(data, doc.id); // Pass along the store data
     });
 }
 
 // Function to display store on the page
-function displayStore(store) {
+function displayStore(store, storeId) {
     // Create store element
     const storeElement = document.createElement('div');
     storeElement.classList.add('store');
 
+    // Create anchor element for linking to product detail page
+  const storeLink = document.createElement('a');
+  storeLink.href = `store_profile.html?id=${storeId}`; // Pass along the document ID as a URL parameter
+  storeLink.style.textDecoration = 'none'; // Remove default underline style
+
     // Create image element
     const imageElement = document.createElement('img');
     imageElement.src = store.image;
-    imageElement.alt = store.name + ' Logo';
+    imageElement.alt = store.name + ' Image';
+
+      // Append image element to the product link
+  storeLink.appendChild(imageElement);
+
+  // Append product link to product container
+  storeElement.appendChild(storeLink);
+
+  // Create and append other product details
+  const storesContainer = document.createElement('div');
+  storesContainer.classList.add('store-profiles');
 
     // Create name element
     const nameElement = document.createElement('p');
+    nameElement.classList.add('store-name');
     nameElement.textContent = store.name;
+    nameElement.style.fontWeight = 'bold'
 
-    // Append elements to store container
-    storeElement.appendChild(imageElement);
-    storeElement.appendChild(nameElement);
+      // Append details to the details container
+  storesContainer.appendChild(nameElement);
+
+
+  // Append details container to product container
+ storeElement.appendChild(storesContainer);
+
 
     // Append store to the "Store Section"
     const storeSection = document.querySelector('.store-section');
@@ -82,7 +103,7 @@ function displayProduct(product, productId) {
     imageElement.src = product.images[0];
     imageElement.alt = product.name + ' Image';
     imageElement.style.width = '100%'; // Set image width to fill the container
-    imageElement.style.height = 'auto'; // Maintain aspect ratio
+    imageElement.style.height = '180px'; // Maintain aspect ratio
 
     // Append image element to the product link
     productLink.appendChild(imageElement);

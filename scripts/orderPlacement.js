@@ -6,13 +6,14 @@ continueShoppingButton.addEventListener('click', function() {
     // Redirect to the store home page
     window.location.href = '../pages/store_home_page.html';
 });
-// Get the "Continue Shopping" button element
+
+// Get the "Place Order" button element
 const orderButton = document.getElementById('place-order');
 
 // Add click event listener to the button
 orderButton.addEventListener('click', function() {
-    // Redirect to the store home page
-    alert('Thank you!');
+    // Redirect to the payment page
+    window.location.href = '../pages/payment_in_cart.html';
 });
 
 // Constant for order data storage key in local storage
@@ -28,6 +29,7 @@ function getOrderData() {
 function saveOrderData(data) {
     localStorage.setItem(orderStorageKey, JSON.stringify(data));
 }
+
 function deleteProduct(index) {
     // Retrieve current order data from storage
     let orderData = getOrderData();
@@ -41,7 +43,6 @@ function deleteProduct(index) {
     // Refresh the display of order data
     displayOrderData();
 }
-
 
 // Function to display order data on the Order Placement page
 function displayOrderData() {
@@ -86,7 +87,6 @@ function displayOrderData() {
     document.getElementById('total-amount').innerText = `$${totalAmount.toFixed(2)}`;
 }
 
-
 // Function to update the quantity of a product in the order data
 function updateQuantity(index, newQuantity) {
     // Retrieve order data from local storage
@@ -101,7 +101,6 @@ function updateQuantity(index, newQuantity) {
     // Refresh the display of order data
     displayOrderData();
 }
-
 
 // Call the function to display the order data when the page loads
 window.onload = displayOrderData;
