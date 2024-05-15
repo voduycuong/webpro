@@ -7,29 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Detail</title>
     <link rel="stylesheet" href="../css/product_detail.css">
+    <script type="module" src="../scripts/productDetail.js"></script>
 </head>
 
 <body>
     <div class="container">
         <header>
-        <h1>Product Detail</h1>
-        <button id="cart-button" class="cart-button"><img src="https://emojicdn.elk.sh/🛒" alt="Cart Emoji"></button>
-</header>
+            <h1>Product Detail</h1>
+            <button id="cart-button" class="cart-button"><img src="https://emojicdn.elk.sh/🛒"
+                    alt="Cart Emoji"></button>
+        </header>
+
         <!-- Product details -->
         <div id="product-detail">
             <div id="image-container">
                 <!-- Main product image -->
                 <img src="" alt="Product Image" id="product-image">
-            
-            
-            <!-- Thumbnails -->
-            <div id="thumbnails-container">
-                <img src="" alt="Thumbnail 1" class="thumbnail" data-index="0">
-                <img src="" alt="Thumbnail 2" class="thumbnail" data-index="1">
-                <img src="" alt="Thumbnail 3" class="thumbnail" data-index="2">
-                <img src="" alt="Thumbnail 4" class="thumbnail" data-index="3">
+
+                <!-- Thumbnails -->
+                <div id="thumbnails-container">
+                    <img src="" alt="Thumbnail 1" class="thumbnail" data-index="0">
+                    <img src="" alt="Thumbnail 2" class="thumbnail" data-index="1">
+                    <img src="" alt="Thumbnail 3" class="thumbnail" data-index="2">
+                    <img src="" alt="Thumbnail 4" class="thumbnail" data-index="3">
+                </div>
             </div>
-</div>
+
             <div id="product-info" class="product-info">
                 <h2 id="product-name"></h2>
                 <p><strong>Description:</strong> <span id="product-description"></span></p>
@@ -49,9 +52,6 @@
         <!-- Flashing message -->
         <div id="message" class="hidden">Product added to cart!</div>
     </div>
-
-    <script type="module" src="../scripts/productDetail.js"></script>
-
 
 </body>
 

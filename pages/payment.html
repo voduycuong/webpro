@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="../css/payment.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Payment</h1>
+        <div id="payment-details" class="card">
+            <p><strong>Product:</strong> <span id="product-name"></span></p>
+            <p><strong>Price ($):</strong> <span id="product-price"></span></p>
+        </div>
+
+        <div class="payment-method">
+            <h2>Select Payment Method</h2>
+            <label>
+                <input type="radio" name="payment-method" value="ATM" id="atm-method"> ATM
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="Cash" id="cash-method"> Cash
+            </label>
+        </div>
+
+        <div id="atm-info" class="card hidden">
+            <h3>Enter Bank Account Information</h3>
+            <form id="atm-form">
+                <div class="form-group">
+                    <label for="account-number">Account Number</label>
+                    <input type="text" id="account-number" name="account-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="account-name">Account Name</label>
+                    <input type="text" id="account-name" name="account-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="bank-name">Bank Name</label>
+                    <input type="text" id="bank-name" name="bank-name" required>
+                </div>
+            </form>
+        </div>
+
+        <div class="button-section">
+            <button id="confirm-payment" class="btn">Confirm Payment</button>
+        </div>
+    </div>
+
+    <script src="../scripts/payment.js"></script>
+</body>
+</html>

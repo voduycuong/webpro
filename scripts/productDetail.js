@@ -11,7 +11,7 @@ const firebaseConfig = {
     messagingSenderId: "811572790555",
     appId: "1:811572790555:web:efb6caa094651088e27fbe",
     measurementId: "G-E002PST6WK"
-  };
+};
 
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
@@ -33,6 +33,22 @@ async function getProductData(productId) {
     }
 }
 
+// Function to fetch featured product data
+async function getFeaturedProductData(productId) {
+    try {
+        const docRef = doc(db, "featuredProducts", productId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            updateProductDetail(data);
+        } else {
+            console.log("No such document!");
+        }
+    } catch (error) {
+        console.error("Error fetching product data:", error);
+    }
+}
+
 // Function to update product details on the page
 function updateProductDetail(data) {
     document.getElementById("product-name").textContent = data.name;
@@ -41,7 +57,6 @@ function updateProductDetail(data) {
     document.getElementById("product-price").textContent = data.price;
     document.getElementById("product-category").textContent = data.category;
     document.getElementById("product-quantity").textContent = data.quantity;
-    // Update product image and thumbnails (assuming you have the image URLs in the 'images' array)
     document.getElementById("product-image").src = data.images[0]; // Set main product image
     const thumbnails = document.querySelectorAll(".thumbnail");
     for (let i = 0; i < thumbnails.length; i++) {
@@ -49,13 +64,27 @@ function updateProductDetail(data) {
     }
 }
 
-// Function to add the current product to the cart
 function addToCart(productId, productName, productPrice) {
-    const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
+    // Retrieve cart data from local storage
     let cart = localStorage.getItem('orderData') ? JSON.parse(localStorage.getItem('orderData')) : [];
-    cart.push(product);
+
+    // Check if the product already exists in the cart
+    const existingProductIndex = cart.findIndex(item => item.id === productId);
+
+    if (existingProductIndex !== -1) {
+        // If the product already exists, update its quantity
+        cart[existingProductIndex].quantity += 1;
+    } else {
+        // If the product doesn't exist, add it to the cart
+        const product = { id: productId, name: productName, price: productPrice, quantity: 1 };
+        cart.push(product);
+    }
+
+    // Save the updated cart data back to local storage
     localStorage.setItem('orderData', JSON.stringify(cart));
-    console.log('Product added to cart:', product);
+
+    console.log('Product added to cart:', productName);
+    alert('Added ' + productName + ' to cart!');
 }
 
 // Function to update main product image with the clicked thumbnail
@@ -76,24 +105,43 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Get product ID from URL parameter
     const productId = getParameterByName('id');
+    const isFeatured = getParameterByName('featured'); // Assuming there's a parameter to indicate featured products
 
-    // Call getProductData function with the product ID
-    getProductData(productId);
+    // Call the appropriate function based on the product type
+    if (isFeatured) {
+        getFeaturedProductData(productId);
+    } else {
+        getProductData(productId);
+    }
 
     // Add event listener to the "Add to Cart" button
     const addToCartButton = document.getElementById('add-to-cart');
-    addToCartButton.addEventListener('click', function() {
+    addToCartButton.addEventListener('click', function () {
         const productName = document.getElementById('product-name').textContent;
         const productPrice = document.getElementById('product-price').textContent;
         addToCart(productId, productName, productPrice);
     });
 
+    // Add event listener to the "Buy Now" button
+    const buyNowButton = document.getElementById('buy-now');
+    if (buyNowButton) {
+        buyNowButton.addEventListener('click', function () {
+            // Get product details
+            const productName = document.getElementById('product-name').textContent;
+            const productPrice = document.getElementById('product-price').textContent;
+
+            // Redirect to the payment page with product details
+            window.location.href = `../pages/payment.html?productName=${encodeURIComponent(productName)}&productPrice=${encodeURIComponent(productPrice)}`;
+        });
+    }
+
+
     // Add event listener to the cart button to move to the order placement page
     const cartButton = document.querySelector('.cart-button img');
-    cartButton.addEventListener('click', function() {
+    cartButton.addEventListener('click', function () {
         window.location.href = '../pages/order_placement.html';
     });
 
