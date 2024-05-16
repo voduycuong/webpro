@@ -114,7 +114,6 @@ async function registerWithEmailAndPassword(event) {
     }
 }
 
-
 document.querySelector('form').addEventListener('submit', registerWithEmailAndPassword);
 document.querySelectorAll('input[name="accountType"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
@@ -124,30 +123,4 @@ document.querySelectorAll('input[name="accountType"]').forEach(function (radio) 
             document.getElementById('storeFields').style.display = 'none';
         }
     });
-});
-
-// Insert header and footer
-document.addEventListener("DOMContentLoaded", function () {
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-
-            const hamburger = document.getElementById('hamburger-menu');
-            const navLinks = document.getElementById('nav-links');
-
-            hamburger.addEventListener('click', () => {
-                if (navLinks.style.display === 'flex') {
-                    navLinks.style.display = 'none';
-                } else {
-                    navLinks.style.display = 'flex';
-                }
-            });
-        });
-
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
 });

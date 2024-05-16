@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms & Conditions</title>
     <link rel="stylesheet" href="../css/copyright.css">
+    <script src="../scripts/header.js" type="text/javascript" defer></script>
+    <script src="../scripts/footer.js" type="text/javascript" defer></script>
 
 </head>
 <body>
-    <!-- Add header -->
-    <div id="header"></div>
+    <header-component></header-component>
+
 
     <h1>TERMS & CONDITIONS</h1>
 
@@ -68,35 +70,6 @@
     <p>If any provision of these Terms is held to be invalid or unenforceable, such provision shall be modified to the
         minimum extent necessary to make it enforceable.</p>
 
-    <!-- Add footer -->
-    <div id="footer"></div>
-
-    <script>
-        // Insert header and footer
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch('header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header').innerHTML = data;
-
-                    const hamburger = document.getElementById('hamburger-menu');
-                    const navLinks = document.getElementById('nav-links');
-
-                    hamburger.addEventListener('click', () => {
-                        if (navLinks.style.display === 'flex') {
-                            navLinks.style.display = 'none';
-                        } else {
-                            navLinks.style.display = 'flex';
-                        }
-                    });
-                });
-
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer').innerHTML = data;
-                });
-        });
-    </script>
+    <footer-component></footer-component>
 </body>
 </html>

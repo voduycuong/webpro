@@ -31,12 +31,18 @@ document.getElementById("login").addEventListener("submit", function (event) {
             console.log("Logged in user:", user);
             // Redirect to another page or show success message
             window.location.href = "../pages/profile.html";
+
+            // Change "My Account" to the user's name and show logout button
+            const accountElement = document.getElementById("account");
+            accountElement.innerHTML = `<a href="../pages/header.html">${user.displayName || 'Profile'}</a>`;
+
+            const logoutElement = document.getElementById("logout");
+            logoutElement.style.display = "block";
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.error("Error logging in:", errorCode, errorMessage);
-            // Show error message to user
         });
 });
 
@@ -68,30 +74,4 @@ document.getElementById("resetPassword").addEventListener("submit", function (ev
             alert("Failed to send password reset email. Please try again.");
         });
     }
-});
-
-// Insert header and footer
-document.addEventListener("DOMContentLoaded", function () {
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-
-            const hamburger = document.getElementById('hamburger-menu');
-            const navLinks = document.getElementById('nav-links');
-
-            hamburger.addEventListener('click', () => {
-                if (navLinks.style.display === 'flex') {
-                    navLinks.style.display = 'none';
-                } else {
-                    navLinks.style.display = 'flex';
-                }
-            });
-        });
-
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
 });

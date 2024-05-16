@@ -20,14 +20,13 @@ const db = getFirestore(app);
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
-
         // User is signed in, retrieve user data from Firestore
         const userEmail = user.email; // Get user's email from authentication
         // Query Firestore to find the user document with matching email
         const usersRef = collection(db, 'Users');
         const q = query(usersRef, where('email', '==', userEmail));
         const querySnapshot = await getDocs(q);
-        
+
         // Check if a document was found
         if (!querySnapshot.empty) {
             // Get the first document from the query result
@@ -93,20 +92,12 @@ function logoutUser() {
 // Attach logout function to logout button
 document.getElementById('logoutButton').addEventListener('click', logoutUser);
 
-document.getElementById('editProfileButton').addEventListener('click', function() {
-    showEditForm();
-});
-
 function showEditForm() {
-    // Example: Hide the display div and show the edit form
     document.getElementById('userProfile').style.display = 'none'; // Hide user profile display
-    
-    // Assuming there's an edit form with id="editProfileForm" already in your HTML, but hidden
+
     const editForm = document.getElementById('editProfileForm');
     editForm.style.display = 'block'; // Show the edit form
-    
-    // Optionally, populate the form fields with the current profile information
-    // This requires the form fields to have specific ids or names
+
     fetchUserProfile().then(profile => {
         document.getElementById('editFullName').value = profile.fullName;
         document.getElementById('editEmail').value = profile.email;
@@ -115,3 +106,7 @@ function showEditForm() {
         document.getElementById('editCountry').value = profile.country;
     });
 }
+
+document.getElementById('editProfileButton').addEventListener('click', function () {
+    showEditForm();
+});

@@ -293,26 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchFeaturedProducts();
     fetchStores();
     fetchFeaturedStores();
-
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-
-        });
-
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
-
-    const hamburger = document.getElementById('hamburger-menu');
-    const navLinks = document.getElementById('nav-links');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    });
 });
 
 // Get the "Continue Shopping" button element
