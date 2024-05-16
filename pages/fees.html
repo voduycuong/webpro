@@ -27,55 +27,29 @@
             <th>Commission Fees</th>
         </tr>
 
-        <tr>
-            <td rowspan="8"> Electronics</td>
-            <td rowspan="2">Mobile & Gadgets</td>
-            <td>Mobile Phones, Tablets</td>
-            <td rowspan="2">5.45%</td>
-        </tr>
-        <tr>
-            <td>All Others</td>
-        </tr>
-
-        <tr>
-            <td>Camera & Drones</td>
-            <td>All</td>
-            <td>7.63%</td>
-        </tr>
-
-        <tr>
-            <td rowspan="2">Home Appliances</td>
-            <td>Large Household Appliances</td>
-            <td rowspan="2">5.45%</td>
-        </tr>
-        <tr>
-            <td>All Others</td>
-        </tr>
-
-        <tr>
-            <td rowspan="2">Computers & Accessories</td>
-            <td>Desktop Computers, Laptops</td>
-            <td rowspan="2">5.45%</td>
-        </tr>
-        <tr>
-            <td>All Others</td>
-        </tr>
-
-        <tr>
-            <td>Gaming & Consoles</td>
-            <td>All</td>
-            <td>7.63%</td>
-        </tr>
-
-        <tr>
-            <td>Non-Electronics</td>
-            <td>All other categories</td>
-            <td>All other sub-categories</td>
-            <td>7.63%</td>
-        </tr>
+        <tbody id="feeTable">
+        </tbody>
     </table>
 
-    <p>For more information, please refer to our <a href="#">Terms of Service</a>.</p>
+    <!-- Admin Section -->
+    <div id="adminSection" style="display: none;">
+        <h2>Update Commission Fees (Admin Only)</h2>
+        <form id="updateFeeForm">
+            <label for="sellerType">Mall Seller Type:</label>
+            <input type="text" id="sellerType" name="sellerType"><br>
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category"><br>
+
+            <label for="subCategory">Sub-Category:</label>
+            <input type="text" id="subCategory" name="subCategory"><br>
+
+            <label for="commissionFee">Commission Fee:</label>
+            <input type="text" id="commissionFee" name="commissionFee"><br>
+
+            <button type="submit">Update Fee</button>
+        </form>
+    </div>
 
     <footer-component></footer-component>
 </body>

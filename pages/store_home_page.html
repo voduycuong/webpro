@@ -28,6 +28,29 @@
         <section id="featured-products" class="featured-products"></section>
     </main>
 
+    <!-- Right Column for Ads -->
+    <aside id="right-column" class="right-column"></aside>
+    </div>
+
     <footer-component></footer-component>
+
+    <!-- Admin Section -->
+    <div id="adminSection" style="display: none;">
+        <h2>Manage Ads (Admin Only)</h2>
+        <form id="addAdForm">
+            <label for="adPosition">Ad Position:</label>
+            <select id="adPosition" name="adPosition">
+                <option value="left">Left Column</option>
+                <option value="right">Right Column</option>
+            </select><br>
+
+            <label for="adContent">Ad Content:</label>
+            <textarea id="adContent" name="adContent"></textarea><br>
+
+            <button type="submit">Add Ad</button>
+        </form>
+        <div id="adsList"></div>
+    </div>
+
 </body>
 </html>

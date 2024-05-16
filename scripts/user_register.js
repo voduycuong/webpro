@@ -124,3 +124,44 @@ document.querySelectorAll('input[name="accountType"]').forEach(function (radio) 
         }
     });
 });
+
+
+// Fetch user role from Firestore
+async function getUserRole(userId) {
+    const userDoc = await getDoc(doc(db, 'Users', userId));
+    if (userDoc.exists()) {
+        return userDoc.data().accountType;
+    } else {
+        throw new Error('User not found');
+    }
+}
+
+// Restrict access based on user role
+async function restrictAccess(user) {
+    try {
+        const role = await getUserRole(user.uid);
+        if (role === 'storeOwner') {
+            console.log("Welcome Store Owner");
+            // Add store owner specific code here
+        } else if (role === 'buyer') {
+            console.log("Welcome Buyer");
+            // Add buyer specific code here
+        } else if (role === 'admin') {
+            console.log("Welcome Admin");
+            // Add admin specific code here
+        } else {
+            console.log("Access Denied");
+        }
+    } catch (error) {
+        console.error("Error fetching user role:", error);
+    }
+}
+
+// Listen for auth state changes
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        restrictAccess(user);
+    } else {
+        console.log("User not logged in");
+    }
+});
