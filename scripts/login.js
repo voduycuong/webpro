@@ -30,6 +30,7 @@ document.getElementById("login").addEventListener("submit", function (event) {
             const user = userCredential.user;
             console.log("Logged in user:", user);
             // Redirect to another page or show success message
+            window.location.href = "../pages/profile.html";
         })
         .catch((error) => {
             const errorCode = error.code;
