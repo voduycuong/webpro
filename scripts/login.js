@@ -1,6 +1,6 @@
 // Import the necessary functions from Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -29,15 +29,15 @@ document.getElementById("login").addEventListener("submit", function (event) {
             // Signed in 
             const user = userCredential.user;
             console.log("Logged in user:", user);
+
+            // Store user information in localStorage
+            localStorage.setItem('user', JSON.stringify({
+                displayName: user.displayName,
+                email: user.email,
+            }));
+
             // Redirect to another page or show success message
             window.location.href = "../pages/profile.html";
-
-            // Change "My Account" to the user's name and show logout button
-            const accountElement = document.getElementById("account");
-            accountElement.innerHTML = `<a href="../pages/header.html">${user.displayName || 'Profile'}</a>`;
-
-            const logoutElement = document.getElementById("logout");
-            logoutElement.style.display = "block";
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -74,4 +74,27 @@ document.getElementById("resetPassword").addEventListener("submit", function (ev
             alert("Failed to send password reset email. Please try again.");
         });
     }
+});
+
+// Logout function
+function logout() {
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        console.log("User signed out.");
+
+        // Remove user information from localStorage
+        localStorage.removeItem('user');
+
+        // Redirect to the home page or login page
+        window.location.href = "../pages/login.html";
+    }).catch((error) => {
+        // An error happened.
+        console.error("Error signing out:", error);
+    });
+}
+
+// Add event listener to logout button
+document.getElementById("logout").addEventListener("click", function (event) {
+    event.preventDefault();
+    logout();
 });

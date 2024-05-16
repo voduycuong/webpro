@@ -63,10 +63,10 @@ footerTemplate.innerHTML = `
         <a href="#" class="footer-logo">
             <img class="logo" alt="Blue Game logo" src="../img/mall_logo_no_text.png" />
         </a>
-        <p class="copyright">
-            Copyright &copy; 2024 by Group 4. All rights reserved.
-        </p>
     </div>
+    <p class="copyright">
+        Copyright &copy; 2024 by Group 4. All rights reserved.
+    </p>
 
     <nav class="nav-col">
         <ul class="footer-nav">

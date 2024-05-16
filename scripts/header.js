@@ -10,7 +10,7 @@ headerTemplate.innerHTML = `
             align-items: center;
             justify-content: space-between;
             background-color: #0E46A3;
-            padding: 0 20px;
+            padding: 0 30px;
             height: 100px;
         }
 
@@ -132,6 +132,15 @@ class Header extends HTMLElement {
         const shadowRoot = this.attachShadow({ mode: 'closed' });
 
         shadowRoot.appendChild(headerTemplate.content);
+
+        // Retrieve user information from localStorage
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
+            const accountElement = shadowRoot.getElementById('account');
+            if (accountElement) {
+                accountElement.innerHTML = `<a href="../pages/profile.html">${user.displayName || 'Profile'}</a>`;
+            }
+        }
     }
 }
 
