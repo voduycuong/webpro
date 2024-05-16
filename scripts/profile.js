@@ -92,3 +92,26 @@ function logoutUser() {
 
 // Attach logout function to logout button
 document.getElementById('logoutButton').addEventListener('click', logoutUser);
+
+document.getElementById('editProfileButton').addEventListener('click', function() {
+    showEditForm();
+});
+
+function showEditForm() {
+    // Example: Hide the display div and show the edit form
+    document.getElementById('userProfile').style.display = 'none'; // Hide user profile display
+    
+    // Assuming there's an edit form with id="editProfileForm" already in your HTML, but hidden
+    const editForm = document.getElementById('editProfileForm');
+    editForm.style.display = 'block'; // Show the edit form
+    
+    // Optionally, populate the form fields with the current profile information
+    // This requires the form fields to have specific ids or names
+    fetchUserProfile().then(profile => {
+        document.getElementById('editFullName').value = profile.fullName;
+        document.getElementById('editEmail').value = profile.email;
+        document.getElementById('editPhone').value = profile.phone;
+        document.getElementById('editAddress').value = profile.address;
+        document.getElementById('editCountry').value = profile.country;
+    });
+}
