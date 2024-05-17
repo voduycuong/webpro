@@ -32,7 +32,7 @@ confirmPaymentButton.addEventListener('click', function () {
 
     // If all required fields are filled, proceed with payment confirmation
     alert('Payment confirmed!');
-    window.location.href = '../pages/store_home_page.html';
+    window.location.href = '/index.html';
 });
 
 

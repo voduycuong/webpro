@@ -86,7 +86,7 @@ function displayProduct(product, productId) {
     productElement.style.height = 'auto';
 
     const productLink = document.createElement('a');
-    productLink.href = `product_detail.html?id=${productId}`;
+    productLink.href = `/pages/product_detail.html?id=${productId}`;
     productLink.style.textDecoration = 'none';
 
     const imageElement = document.createElement('img');
@@ -129,7 +129,7 @@ function displayFeaturedProduct(product, productId) {
     productElement.style.height = 'auto';
 
     const productLink = document.createElement('a');
-    productLink.href = `product_detail.html?id=${productId}&featured=true`;
+    productLink.href = `/pages/product_detail.html?id=${productId}&featured=true`;
     productLink.style.textDecoration = 'none';
 
     const imageElement = document.createElement('img');
@@ -171,7 +171,7 @@ function displayStore(store, storeId) {
     storeElement.classList.add('store');
 
     const storeLink = document.createElement('a');
-    storeLink.href = `store_profile.html?id=${storeId}`;
+    storeLink.href = `/pages/store_profile.html?id=${storeId}`;
     storeLink.style.textDecoration = 'none';
 
     const imageElement = document.createElement('img');
@@ -201,7 +201,7 @@ function displayFeaturedStore(store, storeId) {
     storeElement.classList.add('store');
 
     const storeLink = document.createElement('a');
-    storeLink.href = `store_profile.html?id=${storeId}`;
+    storeLink.href = `/pages/store_profile.html?id=${storeId}`;
     storeLink.style.textDecoration = 'none';
 
     const imageElement = document.createElement('img');
@@ -386,7 +386,7 @@ const continueShoppingButton = document.getElementById('browse');
 
 // Add click event listener to the button
 continueShoppingButton.addEventListener('click', function () {
-    window.location.href = '../pages/browse.html';
+    window.location.href = '/pages/browse.html';
 });
 
 // Add event listener to add ad form

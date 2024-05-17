@@ -109,13 +109,13 @@ headerTemplate.innerHTML = `
 
         <nav>
             <ul>
-                <li><a href="../pages/store_home_page.html">Home</a></li>
-                <li><a href="../pages/about_us.html">About Us</a></li>
-                <li><a href="../pages/fees.html">Fees</a></li>
-                <li id="account"><a href="../pages/login.html">My Account</a></li>
-                <li id="browse"><a href="../pages/browse.html">Browse</a></li>
-                <li><a href="../pages/faq.html">FAQs</a></li>
-                <li><a href="../pages/contact.html">Contact</a></li>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/pages/about_us.html">About Us</a></li>
+                <li><a href="/pages/fees.html">Fees</a></li>
+                <li id="account"><a href="/pages/login.html">My Account</a></li>
+                <li id="browse"><a href="/pages/browse.html">Browse</a></li>
+                <li><a href="/pages/faq.html">FAQs</a></li>
+                <li><a href="/pages/contact.html">Contact</a></li>
                 <li id="logout" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </nav>

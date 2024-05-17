@@ -70,9 +70,9 @@ footerTemplate.innerHTML = `
 
     <nav class="nav-col">
         <ul class="footer-nav">
-            <li><a class="footer-link" href="../pages/copyright.html">Copyright</a></li>
-            <li><a class="footer-link" href="../pages/terms_of_service.html">Terms of Service</a></li>
-            <li><a class="footer-link" href="../pages/privacy_policy.html">Privacy Policy</a></li>
+            <li><a class="footer-link" href="/pages/copyright.html">Copyright</a></li>
+            <li><a class="footer-link" href="/pages/terms_of_service.html">Terms of Service</a></li>
+            <li><a class="footer-link" href="/pages/privacy_policy.html">Privacy Policy</a></li>
         </ul>
     </nav>
   </footer>

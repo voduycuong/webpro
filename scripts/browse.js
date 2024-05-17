@@ -35,7 +35,7 @@ function displayStore(store, storeId) {
 
     // Create anchor element for linking to product detail page
     const storeLink = document.createElement('a');
-    storeLink.href = `store_profile.html?id=${storeId}`; // Pass along the document ID as a URL parameter
+    storeLink.href = `/pages/store_profile.html?id=${storeId}`; // Pass along the document ID as a URL parameter
     storeLink.style.textDecoration = 'none'; // Remove default underline style
 
     // Create image element
@@ -92,7 +92,7 @@ function displayProduct(product, productId) {
 
     // Create anchor element for linking to product detail page
     const productLink = document.createElement('a');
-    productLink.href = `product_detail.html?id=${productId}`; // Pass along the document ID as a URL parameter
+    productLink.href = `/pages/product_detail.html?id=${productId}`; // Pass along the document ID as a URL parameter
     productLink.style.textDecoration = 'none'; // Remove default underline style
 
     // Create image element
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const continueShoppingButton = document.getElementById('home');
     continueShoppingButton.addEventListener('click', function () {
         // Redirect to the store home page
-        window.location.href = '../pages/store_home_page.html';
+        window.location.href = '/index.html';
     });
 
     // Get the "Browse" button element

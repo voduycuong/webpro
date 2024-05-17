@@ -4,7 +4,7 @@ const continueShoppingButton = document.getElementById('continue-shopping');
 // Add click event listener to the button
 continueShoppingButton.addEventListener('click', function () {
     // Redirect to the store home page
-    window.location.href = '../pages/store_home_page.html';
+    window.location.href = '/index.html';
 });
 
 // Get the "Place Order" button element

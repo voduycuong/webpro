@@ -84,7 +84,7 @@ function displayProduct(product, productId) {
 
         // Create anchor element for linking to product detail page
         const productLink = document.createElement('a');
-        productLink.href = `product_detail.html?id=${productId}`; // Pass along the document ID as a URL parameter
+        productLink.href = `/pages/product_detail.html?id=${productId}`; // Pass along the document ID as a URL parameter
         productLink.style.textDecoration = 'none'; // Remove default underline style
 
         // Create image element
