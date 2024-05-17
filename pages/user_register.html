@@ -79,7 +79,9 @@
 
                 <div class="form-group">
                     <label for="country">Country:</label>
-                    <input type="text" id="country" name="country" required>
+                    <select id="country" name="country" required>
+                        <option value="">Select a country</option>
+                    </select>
                 </div>
 
                 <label>Account type:</label>
@@ -90,7 +92,7 @@
                     <label for="storeOwner" class="account_label">Store Owner</label>
                 </div>
 
-                <div id="storeFields">
+                <div id="storeFields" style="display: none;">
                     <div class="form-group">
                         <label for="storeName">Store name:</label>
                         <input type="text" id="storeName" name="storeName">
@@ -102,14 +104,12 @@
                     </div>
                 </div>
 
-                </div>
-
                 <button type="submit">Register</button>
             </form>
         </section>
     </main>
 
     <footer-component></footer-component>
-
 </body>
+
 </html>

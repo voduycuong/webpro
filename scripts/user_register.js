@@ -1,9 +1,10 @@
 // Import Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
 
+// Initialize Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyC1lU93LyUOig7V-j1bmQuK3J3EGG7lzP0",
     authDomain: "bluegame-28f86.firebaseapp.com",
@@ -15,11 +16,38 @@ const firebaseConfig = {
     measurementId: "G-E002PST6WK"
 };
 
-// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 const storage = getStorage(app);
+
+// Function to read CSV file from directory and parse it
+async function readCSVFromDirectory(filePath) {
+    const response = await fetch(filePath);
+    const text = await response.text();
+    const data = text.split('\n').map(row => row.split(','));
+    return data;
+}
+
+// Populate dropdown with countries from CSV
+async function populateCountryDropdown() {
+    const countrySelect = document.getElementById('country');
+    countrySelect.innerHTML = '<option value="">Select a country</option>'; // Clear existing options
+
+    try {
+        const csvData = await readCSVFromDirectory('/misc/countries_code.csv'); // Replace with the actual path to the CSV file
+        csvData.forEach(row => {
+            const country = row[0]; // Assuming the country is in the first cell of each row
+            const option = document.createElement('option');
+            option.value = country;
+            option.text = country;
+            countrySelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error reading CSV file:', error);
+        alert('Error reading CSV file: ' + error.message);
+    }
+}
 
 async function registerWithEmailAndPassword(event) {
     event.preventDefault();
@@ -34,7 +62,7 @@ async function registerWithEmailAndPassword(event) {
     const address = document.getElementById('address').value;
     const city = document.getElementById('city').value;
     const zipcode = document.getElementById('zipcode').value;
-    const country = document.getElementById('country').value;
+    const country = document.getElementById('country').value; // Get selected country value
     const accountType = document.querySelector('input[name="accountType"]:checked').value;
 
     let storeName = '';
@@ -125,6 +153,18 @@ document.querySelectorAll('input[name="accountType"]').forEach(function (radio) 
     });
 });
 
+document.addEventListener('DOMContentLoaded', populateCountryDropdown); // Populate dropdown on page load
+
+// Check re-typed password
+document.getElementById('confirmPassword').addEventListener('input', function () {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    if (password !== confirmPassword) {
+        document.getElementById('confirmPassword').setCustomValidity('Passwords do not match');
+    } else {
+        document.getElementById('confirmPassword').setCustomValidity('');
+    }
+});
 
 // Fetch user role from Firestore
 async function getUserRole(userId) {
