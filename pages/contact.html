@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
     <link rel="stylesheet" href="../css/contact.css">
-    <script src="../scripts/contact_validate.js"></script>
     <script src="../scripts/header.js" type="text/javascript" defer></script>
     <script src="../scripts/footer.js" type="text/javascript" defer></script>
 </head>
@@ -14,7 +13,7 @@
 
     <div class="container">
         <h2>Contact Us</h2>
-        <form action="process_form.php" method="post">
+        <form id="contactForm">
             <label for="contactPurpose">Contact Purpose:</label>
             <select id="contactPurpose" name="contactPurpose">
                 <option value="General Inquiry">General Inquiry</option>
@@ -61,11 +60,11 @@
             <br><br>
 
             <textarea id="message" name="message" rows="4" minlength="50" maxlength="500" required></textarea>
-            <input type="submit" value="Send">
-            <input type="reset" value="Clear">
+            <button type="submit" id="submit">Send</button>
+            <button type="reset" id="reset">Clear</button>
         </form>
     </div>
-
+    <script type="module" src="../scripts/contact_validate.js" defer></script>
     <footer-component></footer-component>
 </body>
 </html>

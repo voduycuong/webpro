@@ -20,8 +20,7 @@ select {
     border-radius: 4px;
 }
 
-input[type="submit"],
-input[type="reset"] {
+#submit, #reset {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -30,7 +29,7 @@ input[type="reset"] {
     border-radius: 4px;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover {
+#submit:hover,
+#reset:hover {
     background-color: #45a049;
 }
