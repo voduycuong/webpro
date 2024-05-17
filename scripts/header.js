@@ -119,7 +119,6 @@ headerTemplate.innerHTML = `
             </ul>
         </nav>
     </header>
-
 `;
 
 class Header extends HTMLElement {

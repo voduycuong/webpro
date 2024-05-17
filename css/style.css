@@ -2,6 +2,23 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
 }
 
 #web-name {
@@ -31,10 +48,6 @@ nav ul li {
 
 nav ul li:last-child {
     margin-right: 0;
-}
-
-main {
-    padding: 20px;
 }
 
 section {
@@ -138,11 +151,6 @@ h2 {
     justify-content: space-between;
 }
 
-main {
-    flex: 1;
-    padding: 20px;
-}
-
 .left-column,
 .right-column {
     width: 200px;
@@ -150,9 +158,71 @@ main {
     background-color: #f4f4f4;
 }
 
-#adminSection {
-    margin: 20px 0;
+.admin-ads {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#ads-form {
+    margin-right: auto;
+    margin-left: auto;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
     border: 1px solid #ccc;
-    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#ads-form label,
+#ads-form input,
+#ads-form button {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#ads-section {
+    width: 100%;
+}
+
+.ads-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.ad-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 200px;
+    margin: 10px;
+}
+
+.ad-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.ad-container button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ad-container button:hover {
+    background-color: darkred;
 }

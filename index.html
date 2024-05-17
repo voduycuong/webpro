@@ -9,10 +9,22 @@
     <script type="module" src="../scripts/script.js"></script>
     <script src="../scripts/header.js" type="text/javascript" defer></script>
     <script src="../scripts/footer.js" type="text/javascript" defer></script>
+    <script src="../scripts/ads.js" type="module" defer></script>
 </head>
 
 <body>
     <header-component></header-component>
+
+    <section id="admin-ads" class="admin-ads" style="display: none;">
+        <h2>Upload Advertisement</h2>
+        <form id="ads-form">
+            <label for="ad-image">Choose an image:</label>
+            <input type="file" id="ad-image" name="ad-image" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
+    </section>
+
+    <section id="ads-section" class="ads-section"></section>
 
     <main>
         <h2>New Stores</h2>
@@ -26,31 +38,11 @@
 
         <h2>Featured Products</h2>
         <section id="featured-products" class="featured-products"></section>
+
+
     </main>
 
-    <!-- Right Column for Ads -->
-    <aside id="right-column" class="right-column"></aside>
-    </div>
-
     <footer-component></footer-component>
-
-    <!-- Admin Section -->
-    <div id="adminSection" style="display: none;">
-        <h2>Manage Ads (Admin Only)</h2>
-        <form id="addAdForm">
-            <label for="adPosition">Ad Position:</label>
-            <select id="adPosition" name="adPosition">
-                <option value="left">Left Column</option>
-                <option value="right">Right Column</option>
-            </select><br>
-
-            <label for="adContent">Ad Content:</label>
-            <textarea id="adContent" name="adContent"></textarea><br>
-
-            <button type="submit">Add Ad</button>
-        </form>
-        <div id="adsList"></div>
-    </div>
 
 </body>
 </html>
