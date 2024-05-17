@@ -20,8 +20,19 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 let displayedProducts = 0;
+let displayedStores = 0;
+let displayedFeaturedStores = 0;
+let displayedFeaturedProducts = 0;
+
 const productsPerPage = 10;
+const storesPerPage = 5;
+const featuredStoresPerPage = 5;
+const featuredProductsPerPage = 10;
+
 let allProducts = [];
+let allStores = [];
+let allFeaturedStores = [];
+let allFeaturedProducts = [];
 
 // Function to fetch products
 async function fetchProducts() {
@@ -46,7 +57,8 @@ function displayInitialProducts() {
         displayedProducts++;
     }
 
-    createViewButtons();
+    const viewButton = document.getElementById('view-more-less-products');
+    viewButton.onclick = () => toggleView(allProducts, newProductsSection, viewButton, productsPerPage, displayProduct);
 }
 
 // Function to fetch featured products
@@ -55,8 +67,25 @@ async function fetchFeaturedProducts() {
     const productsSnapshot = await getDocs(productsRef);
     productsSnapshot.forEach(doc => {
         const data = doc.data();
-        displayFeaturedProduct(data, doc.id);
+        allFeaturedProducts.push({ data, id: doc.id });
     });
+    displayInitialFeaturedProducts();
+}
+
+function displayInitialFeaturedProducts() {
+    const featuredProductsSection = document.getElementById('featured-products');
+    featuredProductsSection.innerHTML = ''; // Clear existing products
+    displayedFeaturedProducts = 0;
+
+    for (let i = 0; i < Math.min(featuredProductsPerPage, allFeaturedProducts.length); i++) {
+        const { data, id } = allFeaturedProducts[i];
+        const productElement = displayProduct(data, id);
+        featuredProductsSection.appendChild(productElement);
+        displayedFeaturedProducts++;
+    }
+
+    const viewButton = document.getElementById('view-more-less-featured-products');
+    viewButton.onclick = () => toggleView(allFeaturedProducts, featuredProductsSection, viewButton, featuredProductsPerPage, displayProduct);
 }
 
 // Function to fetch stores
@@ -65,8 +94,25 @@ async function fetchStores() {
     const storesSnapshot = await getDocs(storesRef);
     storesSnapshot.forEach(doc => {
         const data = doc.data();
-        displayStore(data, doc.id);
+        allStores.push({ data, id: doc.id });
     });
+    displayInitialStores();
+}
+
+function displayInitialStores() {
+    const newStoresSection = document.getElementById('new-stores');
+    newStoresSection.innerHTML = ''; // Clear existing stores
+    displayedStores = 0;
+
+    for (let i = 0; i < Math.min(storesPerPage, allStores.length); i++) {
+        const { data, id } = allStores[i];
+        const storeElement = displayStore(data, id);
+        newStoresSection.appendChild(storeElement);
+        displayedStores++;
+    }
+
+    const viewButton = document.getElementById('view-more-less-stores');
+    viewButton.onclick = () => toggleView(allStores, newStoresSection, viewButton, storesPerPage, displayStore);
 }
 
 // Function to fetch featured stores
@@ -75,8 +121,41 @@ async function fetchFeaturedStores() {
     const storesSnapshot = await getDocs(storesRef);
     storesSnapshot.forEach(doc => {
         const data = doc.data();
-        displayFeaturedStore(data, doc.id);
+        allFeaturedStores.push({ data, id: doc.id });
     });
+    displayInitialFeaturedStores();
+}
+
+function displayInitialFeaturedStores() {
+    const featuredStoresSection = document.getElementById('featured-stores');
+    featuredStoresSection.innerHTML = ''; // Clear existing stores
+    displayedFeaturedStores = 0;
+
+    for (let i = 0; i < Math.min(featuredStoresPerPage, allFeaturedStores.length); i++) {
+        const { data, id } = allFeaturedStores[i];
+        const storeElement = displayStore(data, id);
+        featuredStoresSection.appendChild(storeElement);
+        displayedFeaturedStores++;
+    }
+
+    const viewButton = document.getElementById('view-more-less-featured-stores');
+    viewButton.onclick = () => toggleView(allFeaturedStores, featuredStoresSection, viewButton, featuredStoresPerPage, displayStore);
+}
+
+function toggleView(allItems, section, viewButton, itemsPerPage, displayFunction) {
+    if (viewButton.textContent === 'View More') {
+        for (let i = section.children.length - 1; i < allItems.length; i++) {
+            const { data, id } = allItems[i];
+            const itemElement = displayFunction(data, id);
+            section.appendChild(itemElement);
+        }
+        viewButton.textContent = 'View Less';
+    } else {
+        while (section.children.length > itemsPerPage) {
+            section.removeChild(section.lastChild);
+        }
+        viewButton.textContent = 'View More';
+    }
 }
 
 function displayProduct(product, productId) {
@@ -122,50 +201,6 @@ function displayProduct(product, productId) {
     return productElement;
 }
 
-function displayFeaturedProduct(product, productId) {
-    const productElement = document.createElement('div');
-    productElement.classList.add('product');
-    productElement.style.width = '200px';
-    productElement.style.height = 'auto';
-
-    const productLink = document.createElement('a');
-    productLink.href = `/pages/product_detail.html?id=${productId}&featured=true`;
-    productLink.style.textDecoration = 'none';
-
-    const imageElement = document.createElement('img');
-    imageElement.src = product.images[0];
-    imageElement.alt = product.name + ' Image';
-    imageElement.style.width = '100%';
-    imageElement.style.height = '180px';
-
-    productLink.appendChild(imageElement);
-    productElement.appendChild(productLink);
-
-    const detailsContainer = document.createElement('div');
-    detailsContainer.classList.add('product-details');
-
-    const nameElement = document.createElement('p');
-    nameElement.classList.add('product-name');
-    nameElement.textContent = product.name;
-
-    const priceElement = document.createElement('p');
-    priceElement.classList.add('product-price');
-    priceElement.textContent = '$' + product.price;
-
-    const brandElement = document.createElement('p');
-    brandElement.classList.add('product-brand');
-    brandElement.textContent = product.brand;
-
-    detailsContainer.appendChild(nameElement);
-    detailsContainer.appendChild(priceElement);
-    detailsContainer.appendChild(brandElement);
-
-    productElement.appendChild(detailsContainer);
-
-    const featuredProductsSection = document.getElementById('featured-products');
-    featuredProductsSection.appendChild(productElement);
-}
-
 function displayStore(store, storeId) {
     const storeElement = document.createElement('div');
     storeElement.classList.add('store');
@@ -192,84 +227,7 @@ function displayStore(store, storeId) {
     storesContainer.appendChild(nameElement);
     storeElement.appendChild(storesContainer);
 
-    const newStoresSection = document.getElementById('new-stores');
-    newStoresSection.appendChild(storeElement);
-}
-
-function displayFeaturedStore(store, storeId) {
-    const storeElement = document.createElement('div');
-    storeElement.classList.add('store');
-
-    const storeLink = document.createElement('a');
-    storeLink.href = `/pages/store_profile.html?id=${storeId}`;
-    storeLink.style.textDecoration = 'none';
-
-    const imageElement = document.createElement('img');
-    imageElement.src = store.image;
-    imageElement.alt = store.name + ' Image';
-
-    storeLink.appendChild(imageElement);
-    storeElement.appendChild(storeLink);
-
-    const storesContainer = document.createElement('div');
-    storesContainer.classList.add('store-profiles');
-
-    const nameElement = document.createElement('p');
-    nameElement.classList.add('store-name');
-    nameElement.textContent = store.name;
-    nameElement.style.fontWeight = 'bold';
-
-    storesContainer.appendChild(nameElement);
-    storeElement.appendChild(storesContainer);
-
-    const featuredStoresSection = document.getElementById('featured-stores');
-    featuredStoresSection.appendChild(storeElement);
-}
-
-function createViewButtons() {
-    const newProductsSection = document.getElementById('new-products');
-    const viewMoreButton = document.createElement('button');
-    const viewLessButton = document.createElement('button');
-
-    viewMoreButton.textContent = 'View More';
-    viewMoreButton.id = 'view-more';
-    viewMoreButton.onclick = viewMoreProducts;
-
-    viewLessButton.textContent = 'View Less';
-    viewLessButton.id = 'view-less';
-    viewLessButton.onclick = viewLessProducts;
-    viewLessButton.style.display = 'none';
-
-    newProductsSection.appendChild(viewMoreButton);
-    newProductsSection.appendChild(viewLessButton);
-}
-
-function viewMoreProducts() {
-    const newProductsSection = document.getElementById('new-products');
-    for (let i = displayedProducts; i < Math.min(displayedProducts + productsPerPage, allProducts.length); i++) {
-        const { data, id } = allProducts[i];
-        const productElement = displayProduct(data, id);
-        newProductsSection.insertBefore(productElement, document.getElementById('view-more'));
-    }
-    displayedProducts += productsPerPage;
-
-    if (displayedProducts >= allProducts.length) {
-        document.getElementById('view-more').style.display = 'none';
-    }
-    document.getElementById('view-less').style.display = 'inline';
-}
-
-function viewLessProducts() {
-    const newProductsSection = document.getElementById('new-products');
-    while (displayedProducts > productsPerPage) {
-        newProductsSection.removeChild(newProductsSection.children[displayedProducts - 1]);
-        displayedProducts--;
-    }
-
-    if (displayedProducts <= productsPerPage) {
-        document.getElementById('view-less').style.display = 'none';
-    }
-    document.getElementById('view-more').style.display = 'inline';
+    return storeElement;
 }
 
 // Function to fetch ads and display them

@@ -226,3 +226,20 @@ h2 {
 .ad-container button:hover {
     background-color: darkred;
 }
+
+.view-button {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-button:hover {
+    background-color: #0056b3;
+}
