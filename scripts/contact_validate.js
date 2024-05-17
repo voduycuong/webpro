@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getFirestore, addDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC1lU93LyUOig7V-j1bmQuK3J3EGG7lzP0",
@@ -10,10 +11,11 @@ const firebaseConfig = {
     messagingSenderId: "811572790555",
     appId: "1:811572790555:web:efb6caa094651088e27fbe",
     measurementId: "G-E002PST6WK"
-  };
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 document.getElementById('submit').addEventListener('click', async (e) => {
     e.preventDefault();
@@ -62,5 +64,43 @@ document.getElementById('submit').addEventListener('click', async (e) => {
     });
     alert('Sent');
     document.getElementById('contactForm').reset();
+});
 
+async function fetchContactEntries() {
+    const contactEntriesContainer = document.getElementById('contactEntries');
+    const contactPurposes = ["General Inquiry", "Feedback", "Support Request"];
+
+    contactPurposes.forEach(async (purpose) => {
+        const querySnapshot = await getDocs(collection(db, "Contact", purpose, "Entries"));
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const contactEntry = document.createElement('div');
+            contactEntry.classList.add('contact-entry');
+
+            contactEntry.innerHTML = `
+                <h3>${data.name} (${data.contactMethod})</h3>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Phone:</strong> ${data.phone}</p>
+                <p><strong>Contact Days:</strong> ${data.contactDays.join(', ')}</p>
+                <p><strong>Message:</strong> ${data.message}</p>
+                <p><strong>Purpose:</strong> ${purpose}</p>
+                <hr>
+            `;
+            contactEntriesContainer.appendChild(contactEntry);
+        });
+    });
+}
+
+async function checkAdmin() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user.role == 'admin') {
+        document.getElementById('admin-container').style.display = 'block';
+        fetchContactEntries();
+    }
+}
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        checkAdmin();
+    }
 });

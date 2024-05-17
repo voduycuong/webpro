@@ -20,7 +20,8 @@ select {
     border-radius: 4px;
 }
 
-#submit, #reset {
+#submit,
+#reset {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -32,4 +33,32 @@ select {
 #submit:hover,
 #reset:hover {
     background-color: #45a049;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact-entry {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-entry h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.contact-entry p {
+    margin: 5px 0;
+}
+
+.admin-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-top: 1px solid #ccc;
 }
