@@ -10,7 +10,15 @@ TBA
 ### *Procedure*
 TBA
 ### *Sample accounts*
-TBA
+#### Admin
+- email: gerade@aus.com
+- password: 123123
+#### Store Ownder
+- email: abc@gmail.com
+- password: 123456
+#### Shopper
+- email:
+- password
 
 ## 3. Group Info and Contribution Score
 ### *Group 4*
