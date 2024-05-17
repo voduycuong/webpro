@@ -94,7 +94,7 @@ headerTemplate.innerHTML = `
 
     <header>
         <div class="logo">
-            <img src="../img/mall_logo.png" alt="Mall Logo">
+            <img src="/img/mall_logo.png" alt="Mall Logo">
         </div>
 
         <div class="web-name">
@@ -119,6 +119,7 @@ headerTemplate.innerHTML = `
             </ul>
         </nav>
     </header>
+
 `;
 
 class Header extends HTMLElement {
@@ -136,7 +137,7 @@ class Header extends HTMLElement {
         if (user) {
             const accountElement = shadowRoot.getElementById('account');
             if (accountElement) {
-                accountElement.innerHTML = `<a href="../pages/user_profile.html">${user.displayName || 'Profile'}</a>`;
+                accountElement.innerHTML = `<a href="/pages/user_profile.html">${user.displayName || 'Profile'}</a>`;
             }
         }
     }

@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const continueShoppingButton = document.getElementById('home');
     continueShoppingButton.addEventListener('click', function () {
         // Redirect to the store home page
-        window.location.href = '/index.html';
+        window.location.href = '/pages/index.html';
     });
 
     // Get the "Browse" button element

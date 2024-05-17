@@ -84,7 +84,7 @@ function displayProduct(product, productId) {
 
         // Create anchor element for linking to product detail page
         const productLink = document.createElement('a');
-        productLink.href = `/pages/product_detail.html?id=${productId}`; // Pass along the document ID as a URL parameter
+        productLink.href = `../pages/product_detail.html?id=${productId}`; // Pass along the document ID as a URL parameter
         productLink.style.textDecoration = 'none'; // Remove default underline style
 
         // Create image element
@@ -135,4 +135,35 @@ function displayProduct(product, productId) {
 
 // Fetch products when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', fetchProducts);
+
+// Function to display store information
+function displayStoreInfo() {
+    const storeName = getParameterByName('storeName');
+    const storeImage = getParameterByName('storeImage');
+
+    console.log("storeName:", storeName);
+    console.log("storeImage:", storeImage);
+
+    // Display store name
+    const storeNameElement = document.getElementById('store-name');
+    if (storeNameElement) {
+        storeNameElement.textContent = storeName;
+    } else {
+        console.error("Element with ID 'store-name' not found");
+    }
+
+    // Display store image
+    const storeImageElement = document.getElementById('store-image');
+    if (storeImageElement) {
+        storeImageElement.src = storeImage;
+        storeImageElement.alt = storeName; // Optionally set alt text for accessibility
+    } else {
+        console.error("Element with ID 'store-image' not found");
+    }
+}
+
+// Call the displayStoreInfo function when the document is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    displayStoreInfo();
+});
 

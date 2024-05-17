@@ -61,7 +61,7 @@ footerTemplate.innerHTML = `
   <footer class="footer">
     <div class="logo-col">
         <a href="#" class="footer-logo">
-            <img class="logo" alt="Blue Game logo" src="../img/mall_logo_no_text.png" />
+            <img class="logo" alt="Blue Game logo" src="/img/mall_logo_no_text.png" />
         </a>
     </div>
     <p class="copyright">
