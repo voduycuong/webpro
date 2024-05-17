@@ -13,7 +13,7 @@ TBA
 #### Admin
 - email: gerade@aus.com
 - password: 123123
-#### Store Ownder
+#### Store Owner
 - email: abc@gmail.com
 - password: 123456
 #### Shopper
