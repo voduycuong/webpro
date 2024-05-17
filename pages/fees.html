@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Shopping Mall Fees</title>
     <link rel="stylesheet" href="../css/fees.css">
-    <script src="../scripts/fee.js"></script>
+    <script src="../scripts/fee.js" type="module" defer></script>
     <script src="../scripts/header.js" type="text/javascript" defer></script>
     <script src="../scripts/footer.js" type="text/javascript" defer></script>
 </head>
@@ -14,21 +14,21 @@
 
     <h1>Online Shopping Mall Fees</h1>
 
-    <h2>Mall commission fees</h2>
+    <h2>Mall Commission Fees</h2>
 
-    <p>The fee cap can help you understand the maximum commission that you'll incur for your products </p>
-    <p> With effect from 1 April 2024, the Commission Fee will be adjusted for Mall sellers. </p>
+    <p>The fee cap can help you understand the maximum commission that you'll incur for your products</p>
+    <p>With effect from 1 April 2024, the Commission Fee will be adjusted for Mall sellers.</p>
 
     <table>
-        <tr>
-            <th>Mall Seller Type</th>
-            <th>Category</th>
-            <th>Sub-Category</th>
-            <th>Commission Fees</th>
-        </tr>
-
-        <tbody id="feeTable">
-        </tbody>
+        <thead>
+            <tr>
+                <th>Mall Seller Type</th>
+                <th>Category</th>
+                <th>Sub-Category</th>
+                <th>Commission Fees</th>
+            </tr>
+        </thead>
+        <tbody id="feeTable"></tbody>
     </table>
 
     <!-- Admin Section -->
@@ -36,16 +36,16 @@
         <h2>Update Commission Fees (Admin Only)</h2>
         <form id="updateFeeForm">
             <label for="sellerType">Mall Seller Type:</label>
-            <input type="text" id="sellerType" name="sellerType"><br>
+            <input type="text" id="sellerType" name="sellerType" required><br>
 
             <label for="category">Category:</label>
-            <input type="text" id="category" name="category"><br>
+            <input type="text" id="category" name="category" required><br>
 
             <label for="subCategory">Sub-Category:</label>
-            <input type="text" id="subCategory" name="subCategory"><br>
+            <input type="text" id="subCategory" name="subCategory" required><br>
 
             <label for="commissionFee">Commission Fee:</label>
-            <input type="text" id="commissionFee" name="commissionFee"><br>
+            <input type="number" id="commissionFee" name="commissionFee" required><br>
 
             <button type="submit">Update Fee</button>
         </form>

@@ -1,8 +1,8 @@
 // Import Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
-import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC1lU93LyUOig7V-j1bmQuK3J3EGG7lzP0",
@@ -80,13 +80,16 @@ async function updateCommissionFee(event) {
 }
 
 // Listen for auth state changes
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
     if (user) {
-        getUserRole(user.uid).then(role => {
+        try {
+            const role = await getUserRole(user.uid);
             if (role === 'admin') {
                 document.getElementById('adminSection').style.display = 'block';
             }
-        });
+        } catch (error) {
+            console.error("Error fetching user role:", error);
+        }
     }
 });
 
@@ -105,14 +108,3 @@ document.addEventListener('DOMContentLoaded', fetchCommissionFees);
 
 // Add event listener to update fee form
 document.getElementById('updateFeeForm').addEventListener('submit', updateCommissionFee);
-
-// Add event listener to account type radio buttons
-document.querySelectorAll('input[name="accountType"]').forEach(function (radio) {
-    radio.addEventListener('change', function () {
-        if (this.value === 'storeOwner') {
-            document.getElementById('storeFields').style.display = 'block';
-        } else {
-            document.getElementById('storeFields').style.display = 'none';
-        }
-    });
-});

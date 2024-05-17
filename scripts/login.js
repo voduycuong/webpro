@@ -1,6 +1,7 @@
 // Import the necessary functions from Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -14,9 +15,23 @@ const firebaseConfig = {
     measurementId: "G-E002PST6WK"
 };
 
-// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Function to get user role from Firestore
+async function getUserRole(email) {
+    const usersRef = collection(db, 'Users');
+    const q = query(usersRef, where('email', '==', email));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+        const userData = querySnapshot.docs[0].data();
+        return userData;
+    } else {
+        throw new Error('User not found');
+    }
+}
 
 // login form
 document.getElementById("login").addEventListener("submit", function (event) {
@@ -25,24 +40,36 @@ document.getElementById("login").addEventListener("submit", function (event) {
     const password = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
+        .then(async (userCredential) => {
             const user = userCredential.user;
             console.log("Logged in user:", user);
 
+            // Fetch user role and redirect accordingly
+            const userData = await getUserRole(user.email);
+            const role = userData.accountType;
+
             // Store user information in localStorage
             localStorage.setItem('user', JSON.stringify({
-                displayName: user.displayName,
+                displayName: userData.displayName,
                 email: user.email,
+                role: role
             }));
 
-            // Redirect to another page or show success message
-            window.location.href = "../pages/profile.html";
+            if (role === 'storeOwner') {
+                window.location.href = "../pages/store_profile.html";
+            } else if (role === 'shopper') {
+                window.location.href = "../pages/user_profile.html";
+            } else if (role === 'admin') {
+                window.location.href = "/index.html";
+            } else {
+                console.error("Unknown user role:", role);
+            }
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.error("Error logging in:", errorCode, errorMessage);
+            // Show error message to user
         });
 });
 
@@ -74,27 +101,4 @@ document.getElementById("resetPassword").addEventListener("submit", function (ev
             alert("Failed to send password reset email. Please try again.");
         });
     }
-});
-
-// Logout function
-function logout() {
-    signOut(auth).then(() => {
-        // Sign-out successful.
-        console.log("User signed out.");
-
-        // Remove user information from localStorage
-        localStorage.removeItem('user');
-
-        // Redirect to the home page or login page
-        window.location.href = "../pages/login.html";
-    }).catch((error) => {
-        // An error happened.
-        console.error("Error signing out:", error);
-    });
-}
-
-// Add event listener to logout button
-document.getElementById("logout").addEventListener("click", function (event) {
-    event.preventDefault();
-    logout();
 });

@@ -116,7 +116,6 @@ headerTemplate.innerHTML = `
                 <li id="browse"><a href="/pages/browse.html">Browse</a></li>
                 <li><a href="/pages/faq.html">FAQs</a></li>
                 <li><a href="/pages/contact.html">Contact</a></li>
-                <li id="logout" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -138,7 +137,7 @@ class Header extends HTMLElement {
         if (user) {
             const accountElement = shadowRoot.getElementById('account');
             if (accountElement) {
-                accountElement.innerHTML = `<a href="../pages/profile.html">${user.displayName || 'Profile'}</a>`;
+                accountElement.innerHTML = `<a href="../pages/user_profile.html">${user.displayName || 'Profile'}</a>`;
             }
         }
     }

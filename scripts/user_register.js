@@ -86,6 +86,7 @@ async function registerWithEmailAndPassword(event) {
             uid: user.uid,
             email: email,
             phone: phone,
+            password: password,
             firstName: firstName,
             lastName: lastName,
             address: address,

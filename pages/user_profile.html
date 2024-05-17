@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../css/user_profile.css">
+    <script src="../scripts/header.js" type="text/javascript" defer></script>
+    <script src="../scripts/footer.js" type="text/javascript" defer></script>
+    <script type="module" src="../scripts/user_profile.js"></script>
+</head>
+<body>
+    <header-component></header-component>
+
+    <div id="userProfile">
+        <img id="profilePicture" src="" alt="Profile Picture">
+        <p>Full Name: <span id="fullName"></span></p>
+        <p>Email: <span id="email"></span></p>
+        <p>Phone number: <span id="phone"></span></p>
+        <p>Address: <span id="address"></span></p>
+        <p>Country: <span id="country"></span></p>
+        <button id="editProfileButton">Edit Profile</button>
+        <button id="logoutButton">Logout</button>
+    </div>
+
+    <footer-component></footer-component>
+</body>
+</html>
