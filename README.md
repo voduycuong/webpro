@@ -14,7 +14,7 @@ TBA
 - email: gerade@aus.com
 - password: 123123
 #### Store Owner
-- email: msi@gmai.com
+- email: msi@gmail.com
 - password: 123123
 #### Shopper
 - email: lionking@gmail.com
