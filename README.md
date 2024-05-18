@@ -1,4 +1,4 @@
-![image](https://github.com/voduycuong/webpro/assets/109839046/accb90d4-86d0-434c-8acd-e8d48d9c563d)# **WEB PROGRAMMING COURSE - COSC2430 - GROUP 4**
+**WEB PROGRAMMING COURSE - COSC2430 - GROUP 4**
 **C/C: Dr. Tri Dang Tran**
 
 <img src="img/mall_logo.png" alt="Mall Logo" width=256px>
