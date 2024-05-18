@@ -4,14 +4,18 @@ headerTemplate.innerHTML = `
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+
         header {
             font-family: "Lato", sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
             background-color: #0E46A3;
-            padding: 0 30px;
-            height: 100px;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            text-align: center;
         }
 
         .web-name {
@@ -21,16 +25,10 @@ headerTemplate.innerHTML = `
         }
 
         .web-name p {
-            color: white;
             white-space: nowrap;
             font-size: 40px;
             font-weight: bold;
             margin: 0;
-        }
-
-        .logo img {
-            width: 80px;
-            padding: 5px;
         }
 
         .nav-links {
@@ -104,6 +102,17 @@ headerTemplate.innerHTML = `
             margin-right: 0;
         }
 
+        a {
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            padding-bottom: 5px;
+            box-shadow: inset 0 -2px 0 0 #fff;
+        }
+
         @media only screen and (min-width: 767px) {
             .hamburger {
                 display: none;
@@ -129,11 +138,6 @@ headerTemplate.innerHTML = `
 
             .nav-links nav ul li:last-child {
                 margin-right: 0;
-            }
-
-            .new-products {
-                justify-content: center;
-                align-items: center;
             }
         }
     </style>
