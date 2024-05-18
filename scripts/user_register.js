@@ -62,15 +62,15 @@ async function registerWithEmailAndPassword(event) {
     const address = document.getElementById('address').value;
     const city = document.getElementById('city').value;
     const zipcode = document.getElementById('zipcode').value;
-    const country = document.getElementById('country').value; // Get selected country value
+    const country = document.getElementById('country').value;
     const accountType = document.querySelector('input[name="accountType"]:checked').value;
 
     let storeName = '';
-    let storeImage = '';
+    let storeImageFile = null;
 
     if (accountType === 'storeOwner') {
         storeName = document.getElementById('storeName').value;
-        storeImage = document.getElementById('storeImage').files[0];
+        storeImageFile = document.getElementById('storeImage').files[0];
     }
 
     if (password !== confirmPassword) {
@@ -86,7 +86,6 @@ async function registerWithEmailAndPassword(event) {
             uid: user.uid,
             email: email,
             phone: phone,
-            password: password,
             firstName: firstName,
             lastName: lastName,
             address: address,
@@ -96,7 +95,7 @@ async function registerWithEmailAndPassword(event) {
             accountType: accountType,
             profilePictureUrl: '',
             storeName: storeName,
-            storeImage: storeImage
+            storeImage: ''
         };
 
         // Upload profile picture if provided
@@ -107,41 +106,32 @@ async function registerWithEmailAndPassword(event) {
             userData.profilePictureUrl = profilePictureUrl;
         }
 
-        // Upload store image if provided
-        if (storeImage) {
-            const storeImageRef = ref(storage, `store_images/${user.uid}/${storeImage.name}`);
-            await uploadBytes(storeImageRef, storeImage);
-            const storeImageUrl = await getDownloadURL(storeImageRef);
-            userData.storeImage = storeImageUrl;
+        // If the user is a store owner, upload store image and add store data to the "Stores" collection
+        if (accountType === 'storeOwner' && storeImageFile) {
+            const storeImageRef = ref(storage, `store_images/${user.uid}/${storeImageFile.name}`);
+            await uploadBytes(storeImageRef, storeImageFile);
+            const storeImageLogo = await getDownloadURL(storeImageRef);
+            userData.storeImage = storeImageLogo;
+
+            const storeData = {
+                name: storeName,
+                image: storeImageLogo
+            };
+
+            await addDoc(collection(db, 'Stores'), storeData);
         }
 
         await addDoc(collection(db, 'Users'), userData);
+
         alert("User registered successfully!");
         window.location.href = "/pages/login.html"; // back to login page
-
-        // If the user is a store owner, add store data to the "Stores" collection
-        if (accountType === 'storeOwner') {
-            const storeData = {
-                name: storeName,
-                image: '' // Placeholder for store image URL
-            };
-            // Upload store image if provided
-            if (storeImage) {
-                const storeImageRef = ref(storage, `store_images/${user.uid}/${storeImage.name}`);
-                await uploadBytes(storeImageRef, storeImage);
-                const storeImageUrl = await getDownloadURL(storeImageRef);
-                storeData.image = storeImageUrl; // Set the store image URL
-            }
-
-            // Add store data to the "Stores" collection
-            await addDoc(collection(db, 'Stores'), storeData);
-        }
 
     } catch (error) {
         console.error("Error registering user:", error);
         alert("Error registering user: " + error.message);
     }
 }
+
 
 document.querySelector('form').addEventListener('submit', registerWithEmailAndPassword);
 document.querySelectorAll('input[name="accountType"]').forEach(function (radio) {

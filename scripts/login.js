@@ -56,9 +56,9 @@ document.getElementById("login").addEventListener("submit", function (event) {
             }));
 
             if (role === 'storeOwner') {
-                window.location.href = "../pages/store_profile.html";
+                window.location.href = "/index.html";
             } else if (role === 'shopper') {
-                window.location.href = "../pages/user_profile.html";
+                window.location.href = "/index.html";
             } else if (role === 'admin') {
                 window.location.href = "/index.html";
             } else {

@@ -39,14 +39,32 @@ onAuthStateChanged(auth, async (user) => {
             document.getElementById('phone').textContent = userData.phone;
             document.getElementById('address').textContent = `${userData.address} ${userData.city} ${userData.zipcode}`;
             document.getElementById('country').textContent = userData.country;
+
+            // Check account type and display store data if user is a store owner
+            if (userData.accountType === 'storeOwner') {
+                document.getElementById('storeSection').style.display = 'block';
+                document.getElementById('storeImage').src = userData.storeImage || 'path/to/default/store_image';
+                document.getElementById('storeName').textContent = userData.storeName || 'No store name available';
+                
+                // Add event listener to store image
+                document.getElementById('storeImage').addEventListener('click', function() {
+                    // Navigate to store profile page with store name and image as parameters
+                    const storeName = userData.storeName || 'defaultStoreName';
+                    const storeImage = userData.storeImage || 'path/to/default/store_image';
+                    window.location.href = `/pages/store_profile.html?storeName=${encodeURIComponent(storeName)}&storeImage=${encodeURIComponent(storeImage)}`;
+                });
+            } else {
+                document.getElementById('storeSection').style.display = 'none';
+            }
         } else {
             console.log("No user data found!");
         }
     } else {
         // No user is signed in, redirect to login page
-        window.location.href = "../pages/login.html";
+        window.location.href = "/pages/login.html";
     }
 });
+
 
 // Function to clear user data from the profile page
 function clearUserProfile() {
@@ -57,6 +75,11 @@ function clearUserProfile() {
     document.getElementById('phone').textContent = '';
     document.getElementById('address').textContent = '';
     document.getElementById('country').textContent = '';
+
+    // Clear store data
+    document.getElementById('storeSection').style.display = 'none';
+    document.getElementById('storeImage').src = 'path/to/default/store_image';
+    document.getElementById('storeName').textContent = '';
 }
 
 // Function to reset in-memory state or variables
@@ -109,4 +132,22 @@ function showEditForm() {
 
 document.getElementById('editProfileButton').addEventListener('click', function () {
     showEditForm();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const listProductButton = document.getElementById('listProduct');
+    const storeNameElement = document.getElementById('storeName');
+
+    listProductButton.addEventListener('click', function() {
+        // Ensure storeName is correctly retrieved
+        const storeName = storeNameElement.textContent.trim();
+        if (storeName) {
+            // Save the store name to localStorage
+            localStorage.setItem('storeName', storeName);
+            // Redirect to the product list page
+            window.location.href = '/pages/product_list.html';
+        } else {
+            console.error('Store Name is empty');
+        }
+    });
 });
