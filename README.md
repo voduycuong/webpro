@@ -14,7 +14,7 @@ TBA
 - email: gerade@aus.com
 - password: 123123
 #### Store Owner
-- email: msi@gmail.com
+- email: acb@gmail.com
 - password: 123123
 #### Shopper
 - email: ab@nehmen.com
