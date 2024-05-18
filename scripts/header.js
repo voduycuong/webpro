@@ -122,7 +122,6 @@ headerTemplate.innerHTML = `
                 display: flex;
                 position: static;
                 text-align: left;
-                /* Reset text alignment for larger screens */
                 justify-content: flex-end;
             }
 
