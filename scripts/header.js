@@ -68,13 +68,14 @@ headerTemplate.innerHTML = `
         @media only screen and (max-width: 767px) {
             .hamburger {
                 display: block; /* Show hamburger menu on smaller screens */
+                cursor: pointer;
             }
 
             nav ul {
                 display: none; /* Hide the nav links by default on smaller screens */
                 flex-direction: column; /* Stack items vertically */
                 position: absolute;
-                top: 60px; /* Adjust position below header */
+                top: 100px; /* Adjust position below header */
                 right: 0;
                 background-color: #0a0a23;
                 width: 100%;
@@ -89,7 +90,6 @@ headerTemplate.innerHTML = `
                 display: flex; /* Show nav links when hamburger menu is clicked */
             }
         }
-
     </style>
 
     <header>
@@ -107,7 +107,7 @@ headerTemplate.innerHTML = `
             <div></div>
         </div>
 
-        <nav>
+        <nav id="nav-links">
             <ul>
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="/pages/about_us.html">About Us</a></li>
@@ -128,7 +128,6 @@ class Header extends HTMLElement {
 
     connectedCallback() {
         const shadowRoot = this.attachShadow({ mode: 'closed' });
-
         shadowRoot.appendChild(headerTemplate.content);
 
         // Retrieve user information from localStorage
