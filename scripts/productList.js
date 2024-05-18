@@ -55,7 +55,7 @@ const firebaseConfig = {
                 <p>Price: $${product.price}</p>
                 <p>Quantity: ${product.quantity}</p>
                 <button class="delete-button" data-id="${doc.id}">
-                    <i class="fas fa-trash-alt">Delete</i>
+                    <i class="fas fa-trash-alt"></i>
                 </button>
             `;
 

@@ -130,9 +130,6 @@ function showEditForm() {
     });
 }
 
-document.getElementById('editProfileButton').addEventListener('click', function () {
-    showEditForm();
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     const listProductButton = document.getElementById('listProduct');

@@ -4,7 +4,9 @@ body, h1, p, div {
     padding: 0;
     text-align: center;
 }
-
+#storeName {
+    font-size: 40px;
+}
 /* Container for the product list */
 .product-list {
     max-width: 800px;

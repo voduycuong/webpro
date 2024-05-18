@@ -52,3 +52,17 @@
 .product-price {
     color: red;
 }
+
+.love-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #808080; /* Grey color when unclicked */
+    font-size: 24px;
+    transition: color 0.3s ease; /* Smooth transition */
+    font-size: 50px;
+}
+
+.love-button.loved {
+    color: #0E46A3; /* #0E46A3 color when clicked */
+}

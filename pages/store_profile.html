@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Profile</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/store_profile.css">
-    <script src="../scripts/header.js" type="text/javascript" defer></script>
-    <script src="../scripts/footer.js" type="text/javascript" defer></script>
-    <script type="module" src="../scripts/store_profile.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/store_profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/scripts/header.js" type="text/javascript" defer></script>
+    <script src="/scripts/footer.js" type="text/javascript" defer></script>
+    <script type="module" src="/scripts/store_profile.js"></script>
+    <script>function toggleLove(button) {
+    // Toggle the color of the button
+    button.classList.toggle('loved');
+}</script>
 
 </head>
 
@@ -21,6 +26,9 @@
             <div class="store-details">
                 <img id="store-image" src="" alt="Store Image">
                 <h3 id="store-name">Store Name</h3>
+                <button class="love-button" onclick="toggleLove(this)">
+                    <i class="fas fa-heart"></i>
+                </button>                
             </div>
             <div id="product-section" class="product-section">
                 <h2>Products</h2>

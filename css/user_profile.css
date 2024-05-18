@@ -142,26 +142,30 @@ footer a:hover {
     font-size: 20px;
 }
 
-/* Add this CSS to style the button */
-#listProduct {
-    background-color: #0E46A3; /* Updated color */
+
+#listProduct,
+#logoutButton {
+    background-color: #0E46A3;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
-    cursor: pointer;
     margin-top: 10px;
-    display: flex;
+    cursor: pointer;
+    display: inline-flex; /* Change to inline-flex */
     align-items: center;
-    justify-content: center; /* Center horizontally */
-    margin: 0 auto; /* Center horizontally */
+    justify-content: center;
+    margin-right: 10px; /* Add margin between buttons */
+    margin-bottom: 10px;
 }
 
-#listProduct:hover {
-    background-color: #062458; /* Darker shade of blue */
+#listProduct:hover,
+#logoutButton:hover {
+    background-color: #062458;
 }
 
-#listProduct i {
+#listProduct i,
+#logoutButton i {
     margin-right: 5px;
 }
 
