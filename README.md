@@ -14,11 +14,11 @@ TBA
 - email: gerade@aus.com
 - password: 123123
 #### Store Owner
-- email: abc@gmail.com
-- password: 123456
+- email: msi@gmai.com
+- password: 123123
 #### Shopper
-- email:
-- password
+- email: lionking@gmail.com
+- password: 123123
 
 ## 3. Group Info and Contribution Score
 ### *Group 4*
