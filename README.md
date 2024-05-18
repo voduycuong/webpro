@@ -24,11 +24,11 @@ TBA
 ### *Group 4*
 | *No.*| *Name*                 | *SID*      | `Score`
 |:----:|:----------------------:|:----------:|:-----:|
-| 1    | Vo Duy Cuong           | S3941544   | `x`
-| 2    | Tran Tuan Bao          | S3970254   | `x`
-| 3    | Pham Hong Nhat         | S3915104   | `x`
-| 4    | Duong Tran Le Truong   | S3807528   | `x`
-| 5    | Le Thanh Vinh          | S3914997   | `x`
+| 1    | Vo Duy Cuong           | S3941544   | `7`  
+| 2    | Tran Tuan Bao          | S3970254   | `7`
+| 3    | Pham Hong Nhat         | S3915104   | `7`
+| 4    | Duong Tran Le Truong   | S3807528   | `7`
+| 5    | Le Thanh Vinh          | S3914997   | `7`
 
 #### Submission day: May 22nd, 2024
 
