@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listener to the cart button to move to the order placement page
     const cartButton = document.querySelector('.cart-button img');
     cartButton.addEventListener('click', function () {
-        window.location.href = '../pages/order_placement.html';
+        window.location.href = '/pages/order_placement.html';
     });
 
     // Add event listener to each thumbnail image
