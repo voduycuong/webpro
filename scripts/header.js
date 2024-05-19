@@ -159,7 +159,7 @@ headerTemplate.innerHTML = `
         <div class="nav-links" id="nav-links">
             <nav>
                 <ul>
-                    <li><a href="/pages/store_home_page.html">Home</a></li>
+                    <li><a href="/index.html">Home</a></li>
                     <li><a href="/pages/about_us.html">About Us</a></li>
                     <li><a href="/pages/fees.html">Fees</a></li>
                     <li><a href="/pages/login.html">My Account</a></li>
