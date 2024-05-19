@@ -134,13 +134,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const productPrice = document.getElementById('product-price').textContent;
 
             // Redirect to the payment page with product details
-            window.location.href = `../pages/payment.html?productName=${encodeURIComponent(productName)}&productPrice=${encodeURIComponent(productPrice)}`;
+            window.location.href = `/pages/payment.html?productName=${encodeURIComponent(productName)}&productPrice=${encodeURIComponent(productPrice)}`;
         });
     }
 
-
     // Add event listener to the cart button to move to the order placement page
-    const cartButton = document.querySelector('.cart-button img');
+    const cartButton = document.querySelector('.cart-button');
     cartButton.addEventListener('click', function () {
         window.location.href = '/pages/order_placement.html';
     });
