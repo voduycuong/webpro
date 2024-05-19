@@ -1,6 +1,7 @@
 // Import Firebase SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyC1lU93LyUOig7V-j1bmQuK3J3EGG7lzP0",
@@ -15,6 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Function to fetch product data
@@ -120,21 +122,36 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listener to the "Add to Cart" button
     const addToCartButton = document.getElementById('add-to-cart');
     addToCartButton.addEventListener('click', function () {
-        const productName = document.getElementById('product-name').textContent;
-        const productPrice = document.getElementById('product-price').textContent;
-        addToCart(productId, productName, productPrice);
+        onAuthStateChanged(auth, (user) => {
+            if (user) { 
+                // User is signed in, add product to cart
+                const productName = document.getElementById('product-name').textContent;
+                const productPrice = document.getElementById('product-price').textContent;
+                addToCart(productId, productName, productPrice);
+            } else {
+                // No user is signed in, redirect to login.html
+                window.location.href = "/pages/login.html";
+            }
+        });
     });
 
     // Add event listener to the "Buy Now" button
     const buyNowButton = document.getElementById('buy-now');
     if (buyNowButton) {
         buyNowButton.addEventListener('click', function () {
-            // Get product details
-            const productName = document.getElementById('product-name').textContent;
-            const productPrice = document.getElementById('product-price').textContent;
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // Get product details
+                    const productName = document.getElementById('product-name').textContent;
+                    const productPrice = document.getElementById('product-price').textContent;
 
-            // Redirect to the payment page with product details
-            window.location.href = `../pages/payment.html?productName=${encodeURIComponent(productName)}&productPrice=${encodeURIComponent(productPrice)}`;
+                    // User is signed in, redirect to payment.html with product details
+                    window.location.href = `../pages/payment.html?productName=${encodeURIComponent(productName)}&productPrice=${encodeURIComponent(productPrice)}`;
+                } else {
+                    // No user is signed in, redirect to login.html
+                    window.location.href = "/pages/login.html";
+                }
+            });    
         });
     }
 
@@ -142,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add event listener to the cart button to move to the order placement page
     const cartButton = document.querySelector('.cart-button img');
     cartButton.addEventListener('click', function () {
-        window.location.href = '/pages/order_placement.html';
+        window.location.href = '../pages/order_placement.html';
     });
 
     // Add event listener to each thumbnail image
