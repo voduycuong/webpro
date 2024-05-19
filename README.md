@@ -1,10 +1,10 @@
-**WEB PROGRAMMING COURSE - COSC2430 - GROUP 4**
+# WEB PROGRAMMING COURSE - COSC2430 - GROUP 4
 **C/C: Dr. Tri Dang Tran**
 
 <img src="img/mall_logo.png" alt="Mall Logo" width=256px>
 
 ## 1. Video demo link
-TBA
+https://youtu.be/K5gAAwjSNrE
 
 ## 2. Testing 
 ### *Procedure*
